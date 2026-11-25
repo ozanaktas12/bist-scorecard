@@ -11,8 +11,6 @@ decorator, so the UI and the report can list every available indicator.
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Callable
-
 import numpy as np
 import pandas as pd
 from numpy.lib.stride_tricks import sliding_window_view
@@ -98,13 +96,16 @@ class RSI(Indicator):
         change = close.diff()
         gain = change.clip(lower=0)
         loss = -change.clip(upper=0)
-        smooth: Callable[[Panel], Panel] = lambda s: s.ewm(
-            alpha=1 / self.period, adjust=False, min_periods=self.period).mean()
-        avg_gain, avg_loss = smooth(gain), smooth(loss)
+        avg_gain = self._wilder_average(gain)
+        avg_loss = self._wilder_average(loss)
         rs = avg_gain / avg_loss
         rsi = 100 - 100 / (1 + rs)
         # No losses at all in the window -> RSI is 100 by definition.
         return rsi.mask(avg_loss == 0, 100.0)
+
+    def _wilder_average(self, values: Panel) -> Panel:
+        """Wilder's smoothing: new_avg = old_avg + (value - old_avg) / period."""
+        return values.ewm(alpha=1 / self.period, adjust=False, min_periods=self.period).mean()
 
 
 @register

@@ -104,10 +104,9 @@ class DecisionLog:
         t = self.resolved
         flagged = {}
         for key, panel in flag_panels.items():
-            hit = panel.stack()
-            hit.index.names = ["date", "ticker"]
-            mask = t.set_index(["date", "ticker"]).index.map(hit.to_dict().get).fillna(False)
-            flagged[key] = t[np.asarray(mask, dtype=bool)]
+            # Look up, for every decision, whether this flag was on for that stock and date.
+            is_on = [bool(panel.at[date, ticker]) for date, ticker in zip(t.date, t.ticker)]
+            flagged[key] = t[is_on]
         flagged["(no flag at all)"] = t[~t.red & ~t.orange & ~t.green]
         flagged["(all decisions)"] = t
         return self._summary(flagged)

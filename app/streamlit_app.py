@@ -14,7 +14,7 @@ from scorecard import indicators as ind  # noqa: E402
 from scorecard.backtest import Backtester, load_cpi, performance, real_returns  # noqa: E402
 from scorecard.config import HORIZONS, PROFILES, Decision, Horizon, Pillar  # noqa: E402
 from scorecard.data import load_market_data  # noqa: E402
-from scorecard.scoring import FLAG_RULES, FlagEngine, Level, ScoreEngine  # noqa: E402
+from scorecard.scoring import FlagEngine, Level, ScoreEngine  # noqa: E402
 
 st.set_page_config(page_title="BIST ScoreCard", page_icon="📊", layout="wide")
 
@@ -49,9 +49,8 @@ engine = engines[horizon]
 latest = engine.latest_date()
 st.sidebar.caption(f"Data until {latest.date()} · {len(market.tickers)} BIST100 stocks")
 weights = PROFILES[profile].weights
-st.sidebar.markdown("**Pillar weights**")
-st.sidebar.dataframe(pd.Series({p.value: f"{w:.0%}" for p, w in weights.items()}, name="weight"),
-                     width="stretch")
+weight_text = " · ".join(f"{p.value} {w:.0%}" for p, w in weights.items())
+st.sidebar.caption(f"Weights of this profile: {weight_text}")
 st.sidebar.caption("Educational project (SEN4015). Not investment advice.")
 
 tab_card, tab_rank, tab_compare, tab_bt = st.tabs(
@@ -188,52 +187,53 @@ with tab_bt:
     cpi = load_cpi()
 
     hr = log.hit_rates()
-    c1, c2, c3, c4 = st.columns(4)
-    c1.metric("BUY decisions", int(hr["BUY decisions"]))
-    c2.metric("BUY hit rate", f"{hr['BUY hit rate']:.1%}", help="Share of BUYs that beat BIST100")
-    c3.metric("Avg excess of BUY", f"{hr['Avg excess BUY']:+.1%}")
-    c4.metric("BUY − SELL spread", f"{hr['BUY-SELL spread']:+.1%}")
+    c1, c2, c3 = st.columns(3)
+    c1.metric("BUY decisions since 2021", int(hr["BUY decisions"]))
+    c2.metric("BUYs that beat BIST100", f"{hr['BUY hit rate']:.0%}")
+    c3.metric("Average result of a BUY vs BIST100", f"{hr['Avg excess BUY']:+.1%}",
+              help=f"Measured {HORIZONS[horizon].forward_days} trading days after the decision")
 
-    growth = pd.DataFrame({"ScoreCard BUY portfolio": strategy, "BIST100": bt.index_month,
-                           "Equal-weight BIST100": ew}).pipe(lambda d: (1 + d).cumprod())
-    real = st.toggle("Show inflation-adjusted (real) values")
+    real = st.toggle("Remove inflation (show real values)")
+    lines = {"Following the BUY list": strategy, "BIST100 index": bt.index_month,
+             "All 100 stocks, equal weights": ew}
     if real:
-        growth = pd.DataFrame({k: real_returns(v, cpi) for k, v in
-                               {"ScoreCard BUY portfolio": strategy, "BIST100": bt.index_month,
-                                "Equal-weight BIST100": ew}.items()}).pipe(lambda d: (1 + d).cumprod())
-    st.plotly_chart(go.Figure([go.Scatter(x=growth.index, y=growth[c], name=c) for c in growth])
-                    .update_layout(height=380, yaxis_title="Growth of 1 TL" + (" (real)" if real else ""),
-                                   legend=dict(orientation="h", y=1.1)), width="stretch")
+        lines = {name: real_returns(monthly, cpi) for name, monthly in lines.items()}
 
-    perf = pd.DataFrame({
-        "ScoreCard": performance(strategy, bt.index_month),
-        "BIST100": performance(bt.index_month),
-        "Equal-weight": performance(ew, bt.index_month),
-        "ScoreCard (real)": performance(real_returns(strategy, cpi)),
-        "BIST100 (real)": performance(real_returns(bt.index_month, cpi)),
-    })
-    order = ["Total return", "CAGR", "Excess CAGR vs index", "Volatility (ann.)",
-             "Sharpe (rf=0)", "Max drawdown", "Months beating index"]
-    perf = perf.reindex(order)
-    shown = perf.apply(lambda row: row.map(
-        lambda v: "–" if pd.isna(v) else f"{v:.2f}" if row.name.startswith("Sharpe") else f"{v:.1%}"),
-        axis=1)
-    st.dataframe(shown, width="stretch")
-    st.caption("Sharpe uses a zero risk-free rate; with Turkish deposit rates of 40 %+ the real "
-               "columns are the fairer comparison.")
+    fig = go.Figure()
+    for name, monthly in lines.items():
+        growth = (1 + monthly).cumprod()
+        fig.add_scatter(x=growth.index, y=growth, name=name)
+    fig.update_layout(height=380, legend=dict(orientation="h", y=1.1),
+                      yaxis_title="Value of 1 TL invested in Jan 2021" + (" (real)" if real else ""))
+    st.plotly_chart(fig, width="stretch")
+
+    summary = {}
+    for name, monthly in lines.items():
+        stats = performance(monthly)
+        summary[name] = {"Total return": f"{stats['Total return']:+.0%}",
+                         "Per year": f"{stats['CAGR']:+.1%}",
+                         "Worst fall": f"{stats['Max drawdown']:.0%}"}
+    st.dataframe(pd.DataFrame(summary).T, width="stretch")
 
     b1, b2 = st.columns(2)
     with b1:
-        st.markdown("**Average excess return by score quintile** (Q5 = best scores)")
+        st.markdown("**Does a higher score mean a better stock?**")
+        st.caption("Every month the stocks are split into 5 equal groups by score "
+                   "(Group 5 = highest scores). Bars show how much each group beat BIST100.")
         buckets = log.by_score_bucket()
-        st.plotly_chart(go.Figure(go.Bar(x=[f"Q{i}" for i in buckets.index], y=buckets["mean"],
-                                         marker_color="#4575b4"))
-                        .update_layout(height=300, yaxis_tickformat=".1%"), width="stretch")
+        fig = go.Figure(go.Bar(x=[f"Group {i}" for i in buckets.index], y=buckets["mean"],
+                               marker_color="#4575b4"))
+        fig.update_layout(height=300, yaxis_tickformat=".1%")
+        st.plotly_chart(fig, width="stretch")
     with b2:
-        st.markdown("**Do the risk flags matter?** (BUY decisions)")
-        st.dataframe(log.flag_effect().style.format({
-            "count": "{:.0f}", "avg excess": "{:+.1%}", "median excess": "{:+.1%}",
-            "hit rate": "{:.1%}", "std of excess": "{:.1%}", "worst 10%": "{:+.1%}"}),
-            width="stretch")
-    st.caption("Limitation: the universe is today's BIST100, so stocks that left the index are "
-               "missing (survivorship bias). Compare with the equal-weight line, not only BIST100.")
+        st.markdown("**Do the risk flags matter?** (BUY decisions only)")
+        st.caption("'Worst 10 %' is the result of the unluckiest tenth of the decisions.")
+        effect = log.flag_effect()
+        flag_table = pd.DataFrame({
+            "Decisions": effect["count"].astype(int),
+            "Average vs BIST100": effect["avg excess"].map("{:+.1%}".format),
+            "Worst 10 %": effect["worst 10%"].map("{:+.1%}".format),
+        })
+        st.dataframe(flag_table, width="stretch")
+    st.caption("Limitation: the stock list is today's BIST100, so companies that left the index "
+               "are missing (survivorship bias). That is why the equal-weight line is shown too.")
