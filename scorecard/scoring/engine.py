@@ -6,7 +6,7 @@ from functools import cached_property
 
 import pandas as pd
 
-from ..config import HORIZONS, PROFILES, SETTINGS, Decision, DecisionRules, Horizon, Pillar, RiskProfile
+from ..config import HORIZONS, SETTINGS, Decision, DecisionRules, Horizon, Pillar, RiskProfile, get_profile
 from ..data import MarketData
 from .flags import FlagEngine, FlagRule, Level
 from .metrics import FeatureBuilder, MetricSpec
@@ -87,7 +87,7 @@ class ScoreEngine:
 
     def total_score(self, profile: RiskProfile | str) -> pd.DataFrame:
         if isinstance(profile, str):
-            profile = PROFILES[profile]
+            profile = get_profile(profile, self.horizon)
         return sum(self.pillar_scores[p] * w for p, w in profile.weights.items())
 
     def decisions(self, profile: RiskProfile | str) -> pd.DataFrame:

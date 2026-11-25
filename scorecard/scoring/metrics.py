@@ -85,7 +85,7 @@ class FeatureBuilder:
                                                    self.min_sector_size)(c, **ctx),
             # Volume
             "obv_slope": ind.OBVSlope(cfg.volume_window)(c, **ctx),
-            "up_volume_share": ind.UpVolumeShare(cfg.volume_window)(c, **ctx),
+            "liquidity": ind.AmihudIlliquidity(cfg.volume_window)(c, **ctx),
             "rel_volume": ind.RelativeVolume(20, 60)(c, **ctx),
         }
         missing = {s.key for s in self.specs} ^ set(raw)
@@ -151,9 +151,9 @@ def build_specs(cfg: HorizonConfig) -> list[MetricSpec]:
         MetricSpec("obv_slope", "On-balance volume", Pillar.VOLUME,
                    [(-0.3, 0.0), (0.0, 50.0), (0.3, 100.0)],
                    lambda v: ("Net buying volume" if v > 0 else "Net selling volume") + f" ({v:+.2f})"),
-        MetricSpec("up_volume_share", "Up-day volume share", Pillar.VOLUME,
-                   [(0.35, 0.0), (0.50, 50.0), (0.65, 100.0)],
-                   lambda v: f"{v:.0%} of the volume traded on up days"),
+        MetricSpec("liquidity", "Liquidity (price impact)", Pillar.VOLUME,
+                   [(0.25, 100.0), (1.0, 60.0), (4.0, 20.0), (10.0, 0.0)],
+                   lambda v: f"Trading moves the price {v:.1f}x as much as for a typical BIST100 stock"),
         MetricSpec("rel_volume", "Relative volume (20/60 days)", Pillar.VOLUME,
                    [(0.5, 20.0), (1.0, 50.0), (1.5, 80.0), (2.5, 90.0)],
                    lambda v: f"Recent trading interest is {v:.2f}x normal"),

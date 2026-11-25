@@ -1,9 +1,11 @@
 """Backtest: replays the decision process on past dates and checks the outcome.
 
 Decisions are taken on the first trading day of every month using only the
-data known on that day (guaranteed by the causal indicators, see
-tests/test_no_lookahead.py). Only the *evaluation* looks into the future: a
-decision is judged by the stock's return over the horizon, relative to BIST100.
+data known at that day's close (guaranteed by the causal indicators, see
+tests/test_no_lookahead.py). The trade happens one day later
+(`execution_lag`), because a real investor can only act after the close.
+Only the *evaluation* looks into the future: a decision is judged by the
+stock's return over the horizon, relative to BIST100.
 
 Two views are produced:
 * decision level - every (date, stock) decision with its later excess return,
@@ -34,9 +36,31 @@ def decision_dates(dates: pd.DatetimeIndex, start: str = BACKTEST_START) -> pd.D
     return pd.DatetimeIndex(firsts.values)
 
 
-def forward_return(prices: pd.DataFrame | pd.Series, days: int):
-    """Return from the close of day t to the close of day t + days (the future outcome)."""
-    return prices.shift(-days) / prices - 1
+def forward_return(prices: pd.DataFrame | pd.Series, days: int, lag: int = 0):
+    """Return from the close of day t + lag to the close of day t + lag + days.
+
+    This is the *future outcome* of a decision taken on day t; it is only used
+    to evaluate decisions, never to make them.
+    """
+    return prices.shift(-(lag + days)) / prices.shift(-lag) - 1
+
+
+def newey_west_t(series: pd.Series, lags: int) -> float:
+    """t-statistic of the mean, robust to autocorrelation (Newey & West, 1987).
+
+    Needed because 3- and 12-month outcomes of consecutive monthly decisions
+    overlap, which makes the plain t-test far too optimistic.
+    """
+    x = series.dropna().to_numpy(dtype=float)
+    n = len(x)
+    if n < 3:
+        return float("nan")
+    e = x - x.mean()
+    variance = e @ e / n
+    for lag in range(1, lags + 1):
+        weight = 1 - lag / (lags + 1)
+        variance += 2 * weight * (e[lag:] @ e[:-lag]) / n
+    return float(x.mean() / np.sqrt(variance / n))
 
 
 @dataclass
@@ -52,18 +76,45 @@ class DecisionLog:
         """Decisions whose evaluation period has already ended."""
         return self.table.dropna(subset=["excess"])
 
+    def _of(self, decision: Decision) -> pd.DataFrame:
+        t = self.resolved
+        return t[t.decision == decision.value]
+
     def hit_rates(self) -> pd.Series:
         t = self.resolved
-        buy, sell = t[t.decision == Decision.BUY.value], t[t.decision == Decision.SELL.value]
+        buy, sell = self._of(Decision.BUY), self._of(Decision.SELL)
+        base = (t.excess > 0).mean()
         return pd.Series({
             "BUY decisions": len(buy),
             "BUY hit rate": (buy.excess > 0).mean(),
+            "Base rate (any stock beats index)": base,
             "SELL decisions": len(sell),
             "SELL hit rate": (sell.excess < 0).mean(),
+            "Base rate (any stock lags index)": 1 - base,
             "Avg excess BUY": buy.excess.mean(),
-            "Avg excess HOLD": t[t.decision == Decision.HOLD.value].excess.mean(),
+            "Avg excess HOLD": self._of(Decision.HOLD).excess.mean(),
             "Avg excess SELL": sell.excess.mean(),
-            "BUY-SELL spread": buy.excess.mean() - sell.excess.mean(),
+            "Avg excess all": t.excess.mean(),
+        })
+
+    def monthly_spreads(self) -> pd.DataFrame:
+        """Per decision date: BUY average minus the average of all stocks, and BUY minus SELL."""
+        t = self.resolved
+        all_mean = t.groupby("date").excess.mean()
+        buy_mean = self._of(Decision.BUY).groupby("date").excess.mean()
+        sell_mean = self._of(Decision.SELL).groupby("date").excess.mean()
+        return pd.DataFrame({"BUY vs all": buy_mean - all_mean, "BUY vs SELL": buy_mean - sell_mean})
+
+    def significance(self) -> pd.Series:
+        """Mean monthly spreads and their Newey-West t-statistics (|t| > 2 ~ significant)."""
+        spreads = self.monthly_spreads()
+        lags = MONTHS_PER_HORIZON[self.horizon] - 1
+        return pd.Series({
+            "BUY vs all (mean)": spreads["BUY vs all"].mean(),
+            "BUY vs all (t)": newey_west_t(spreads["BUY vs all"], lags),
+            "BUY vs SELL (mean)": spreads["BUY vs SELL"].mean(),
+            "BUY vs SELL (t)": newey_west_t(spreads["BUY vs SELL"], lags),
+            "months": len(spreads.dropna()),
         })
 
     def by_score_bucket(self, buckets: int = 5) -> pd.DataFrame:
@@ -71,9 +122,10 @@ class DecisionLog:
         t = self.resolved.copy()
         t["bucket"] = t.groupby("date")["score"].transform(
             lambda s: pd.qcut(s.rank(method="first"), buckets, labels=False) + 1)
-        return t.groupby("bucket")["excess"].agg(["mean", "median", "count",
-                                                  lambda e: (e > 0).mean()]).rename(
-            columns={"<lambda_0>": "share beating index"})
+        grouped = t.groupby("bucket")["excess"]
+        return pd.DataFrame({"mean": grouped.mean(), "median": grouped.median(),
+                             "count": grouped.size(),
+                             "share beating index": grouped.apply(lambda e: (e > 0).mean())})
 
     @staticmethod
     def _summary(groups: dict[str, pd.DataFrame]) -> pd.DataFrame:
@@ -92,7 +144,7 @@ class DecisionLog:
         Flags are risk warnings, so besides the average the dispersion and the
         worst decile are reported: a flag may signal *risk* without lowering the mean.
         """
-        buys = self.resolved[self.resolved.decision == Decision.BUY.value]
+        buys = self._of(Decision.BUY)
         return self._summary({
             "BUY with red flag": buys[buys.red],
             "BUY with orange flag only": buys[~buys.red & buys.orange],
@@ -107,52 +159,85 @@ class DecisionLog:
             # Look up, for every decision, whether this flag was on for that stock and date.
             is_on = [bool(panel.at[date, ticker]) for date, ticker in zip(t.date, t.ticker)]
             flagged[key] = t[is_on]
-        flagged["(no flag at all)"] = t[~t.red & ~t.orange & ~t.green]
+        flagged["(no flag at all)"] = t[~t.red & ~t.orange]
         flagged["(all decisions)"] = t
         return self._summary(flagged)
 
 
 class Backtester:
     def __init__(self, market: MarketData, rules: DecisionRules = SETTINGS.rules,
-                 start: str = BACKTEST_START):
-        self.market, self.rules = market, rules
+                 start: str = BACKTEST_START, lag: int = SETTINGS.execution_lag):
+        self.market, self.rules, self.lag = market, rules, lag
         self.dates = decision_dates(market.dates, start)
         self.flags = FlagEngine(market)
         self.engines = {h: ScoreEngine(market, h, self.flags, rules) for h in Horizon}
         self.red = self.flags.has_level(Level.RED)
         self.orange = self.flags.has_level(Level.ORANGE)
-        self.green = self.flags.has_level(Level.GREEN)
-        # Monthly returns between consecutive decision dates (portfolio simulation).
-        month_ends = list(self.dates[1:]) + [market.dates[-1]]
-        self.stock_month = (market.close.loc[month_ends].to_numpy() /
-                            market.close.loc[self.dates].to_numpy() - 1)
-        self.stock_month = pd.DataFrame(self.stock_month, index=self.dates, columns=market.tickers)
-        self.index_month = pd.Series(market.index_close.loc[month_ends].to_numpy() /
-                                     market.index_close.loc[self.dates].to_numpy() - 1,
-                                     index=self.dates)
+        self.stock_month, self.index_month = self._monthly_returns()
+
+    def _monthly_returns(self) -> tuple[pd.DataFrame, pd.Series]:
+        """Returns between consecutive trade days (decision day + lag)."""
+        positions = self.market.dates.get_indexer(self.dates) + self.lag
+        last = len(self.market.dates) - 1
+        trade_days = self.market.dates[np.minimum(positions, last)]
+        next_trade_days = list(trade_days[1:]) + [self.market.dates[last]]
+        stock = (self.market.close.loc[next_trade_days].to_numpy() /
+                 self.market.close.loc[trade_days].to_numpy() - 1)
+        index = (self.market.index_close.loc[next_trade_days].to_numpy() /
+                 self.market.index_close.loc[trade_days].to_numpy() - 1)
+        return (pd.DataFrame(stock, index=self.dates, columns=self.market.tickers),
+                pd.Series(index, index=self.dates))
+
+    def excess_returns(self, horizon: Horizon) -> pd.DataFrame:
+        """Future return over the horizon minus BIST100's, for every decision date."""
+        days = HORIZONS[horizon].forward_days
+        stock = forward_return(self.market.close, days, self.lag)
+        index = forward_return(self.market.index_close, days, self.lag)
+        return stock.sub(index, axis=0).loc[self.dates]
 
     # ------------------------------------------------------------ decision level
     def decision_log(self, horizon: Horizon, profile: str, rules: DecisionRules | None = None,
-                     weights_total: pd.DataFrame | None = None) -> DecisionLog:
+                     total: pd.DataFrame | None = None) -> DecisionLog:
+        """`total` lets the calibration pass scores built from its own weights."""
         engine, cfg = self.engines[horizon], HORIZONS[horizon]
-        total = weights_total if weights_total is not None else engine.total_score(profile)
-        total = total.loc[self.dates]
+        total = (total if total is not None else engine.total_score(profile)).loc[self.dates]
         decisions = decide(total, rules or self.rules)
-        stock_fwd = forward_return(self.market.close, cfg.forward_days).loc[self.dates]
-        index_fwd = forward_return(self.market.index_close, cfg.forward_days).loc[self.dates]
-        excess = stock_fwd.sub(index_fwd, axis=0)
+        stock_fwd = forward_return(self.market.close, cfg.forward_days, self.lag).loc[self.dates]
 
         table = pd.DataFrame({
             "score": total.stack(),
             "decision": decisions.stack(),
             "return": stock_fwd.stack(),
-            "excess": excess.stack(),
+            "excess": self.excess_returns(horizon).stack(),
             "red": self.red.loc[self.dates].stack(),
             "orange": self.orange.loc[self.dates].stack(),
-            "green": self.green.loc[self.dates].stack(),
         }).dropna(subset=["score"])
         table.index.names = ["date", "ticker"]
         return DecisionLog(horizon, profile, table.reset_index())
+
+    def metric_ic(self, horizon: Horizon, dates: pd.DatetimeIndex | None = None) -> pd.DataFrame:
+        """Rank correlation between each raw metric and the later excess return.
+
+        Positive = high values were followed by better returns. Computed per
+        decision date (Spearman) and averaged, with a Newey-West t-statistic.
+        """
+        dates = self.dates if dates is None else dates
+        excess = self.excess_returns(horizon).loc[dates]
+        engine = self.engines[horizon]
+        panels = dict(engine.features.raw)
+        panels["TOTAL SCORE (Balanced)"] = engine.total_score("Balanced")
+        rows = {}
+        for key, panel in panels.items():
+            ics = []
+            for date in dates:
+                a, b = panel.loc[date], excess.loc[date]
+                ok = a.notna() & b.notna()
+                if ok.sum() >= 20:
+                    ics.append(a[ok].rank().corr(b[ok].rank()))
+            ics = pd.Series(ics, dtype=float)
+            rows[key] = {"mean IC": ics.mean(),
+                         "t": newey_west_t(ics, MONTHS_PER_HORIZON[horizon] - 1)}
+        return pd.DataFrame(rows).T
 
     # ----------------------------------------------------------- portfolio level
     def portfolio(self, log: DecisionLog, selection: pd.DataFrame | None = None) -> pd.Series:
@@ -176,13 +261,15 @@ class Backtester:
                 picked = selection.iloc[j]
                 if picked.any():
                     cohorts.append(self.stock_month.loc[date, picked].mean())
-            # Without any BUY the money waits in the index fund.
-            month = np.nanmean(cohorts) if cohorts else self.index_month[date]
-            returns.append(month - monthly_cost if cohorts else month)
+            if cohorts:
+                returns.append(np.nanmean(cohorts) - monthly_cost)
+            else:
+                # Without any BUY the money waits in an index fund.
+                returns.append(self.index_month[date])
         return pd.Series(returns, index=self.dates, name=f"{log.horizon.value}/{log.profile}")
 
     def equal_weight_universe(self) -> pd.Series:
-        """Buy-and-hold benchmark: every available stock, equal weights."""
+        """Benchmark: every available stock, equal weights, rebalanced monthly."""
         return self.stock_month.mean(axis=1).rename("Equal-weight BIST100")
 
     def random_portfolios(self, log: DecisionLog, n: int = 200, seed: int = 7) -> pd.DataFrame:
@@ -228,12 +315,10 @@ def performance(monthly: pd.Series, benchmark: pd.Series | None = None) -> pd.Se
         "Total return": growth.iloc[-1] - 1,
         "CAGR": growth.iloc[-1] ** (1 / years) - 1,
         "Volatility (ann.)": monthly.std() * np.sqrt(12),
-        "Sharpe (rf=0)": monthly.mean() / monthly.std() * np.sqrt(12),
         "Max drawdown": (growth / growth.cummax() - 1).min(),
     }
     if benchmark is not None:
-        diff = monthly - benchmark.reindex(monthly.index)
-        stats["Months beating index"] = (diff > 0).mean()
-        stats["Excess CAGR vs index"] = stats["CAGR"] - (
-            (1 + benchmark.reindex(monthly.index)).prod() ** (1 / years) - 1)
+        bench = benchmark.reindex(monthly.index)
+        stats["Months beating benchmark"] = (monthly > bench).mean()
+        stats["CAGR vs benchmark"] = stats["CAGR"] - ((1 + bench).prod() ** (1 / years) - 1)
     return pd.Series(stats)

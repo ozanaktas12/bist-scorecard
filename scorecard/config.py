@@ -111,6 +111,30 @@ PROFILES: dict[str, RiskProfile] = {
 }
 
 
+# Weights found by scripts/run_backtest.py (scorecard/backtest/calibration.py):
+# searched on 2021-2023 decisions only, then validated on 2024-2026, where they
+# beat all three hand-made profiles in every horizon. They differ per horizon.
+DATA_DRIVEN = "Data-driven"
+CALIBRATED_WEIGHTS: dict[Horizon, dict[Pillar, float]] = {
+    Horizon.SHORT: {Pillar.TREND: 0.05, Pillar.MOMENTUM: 0.05, Pillar.RISK: 0.80,
+                    Pillar.RELATIVE: 0.05, Pillar.VOLUME: 0.05},
+    Horizon.MEDIUM: {Pillar.TREND: 0.05, Pillar.MOMENTUM: 0.10, Pillar.RISK: 0.65,
+                     Pillar.RELATIVE: 0.05, Pillar.VOLUME: 0.15},
+    Horizon.LONG: {Pillar.TREND: 0.10, Pillar.MOMENTUM: 0.25, Pillar.RISK: 0.55,
+                   Pillar.RELATIVE: 0.05, Pillar.VOLUME: 0.05},
+}
+
+
+def get_profile(name: str, horizon: Horizon) -> RiskProfile:
+    """Hand-made profiles are the same for every horizon; the data-driven one is not."""
+    if name == DATA_DRIVEN:
+        return RiskProfile(DATA_DRIVEN, CALIBRATED_WEIGHTS[horizon])
+    return PROFILES[name]
+
+
+PROFILE_NAMES = [*PROFILES, DATA_DRIVEN]
+
+
 @dataclass(frozen=True)
 class DecisionRules:
     """BUY needs an absolute AND a relative condition; SELL needs either one."""
@@ -137,6 +161,7 @@ class Settings:
     data: DataConfig = field(default_factory=DataConfig)
     rules: DecisionRules = field(default_factory=DecisionRules)
     transaction_cost: float = 0.002        # 0.2 % per trade (commission + spread)
+    execution_lag: int = 1                 # decide after the close, trade on the next day
 
 
 SETTINGS = Settings()

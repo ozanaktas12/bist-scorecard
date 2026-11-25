@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import argparse
 
-from .config import PROFILES, Horizon
+from .config import PROFILE_NAMES, Horizon
 from .data import load_market_data
 from .scoring import ScoreEngine
 
@@ -12,7 +12,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="BIST ScoreCard for one stock")
     parser.add_argument("ticker")
     parser.add_argument("--horizon", choices=[h.value for h in Horizon], default="medium")
-    parser.add_argument("--profile", choices=list(PROFILES), default="Balanced")
+    parser.add_argument("--profile", choices=PROFILE_NAMES, default="Balanced")
     args = parser.parse_args()
 
     market, _ = load_market_data()

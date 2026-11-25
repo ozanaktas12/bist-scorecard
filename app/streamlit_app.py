@@ -12,15 +12,15 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from scorecard import indicators as ind  # noqa: E402
 from scorecard.backtest import Backtester, load_cpi, performance, real_returns  # noqa: E402
-from scorecard.config import HORIZONS, PROFILES, Decision, Horizon, Pillar  # noqa: E402
+from scorecard.config import DATA_DRIVEN, HORIZONS, PROFILE_NAMES, Decision, Horizon, Pillar, get_profile  # noqa: E402
 from scorecard.data import load_market_data  # noqa: E402
 from scorecard.scoring import FlagEngine, Level, ScoreEngine  # noqa: E402
 
 st.set_page_config(page_title="BIST ScoreCard", page_icon="📊", layout="wide")
 
 DECISION_COLORS = {"BUY": "#1a9850", "HOLD": "#8c8c8c", "SELL": "#d73027"}
-LEVEL_BOX = {Level.RED: st.error, Level.ORANGE: st.warning, Level.GREEN: st.success}
-LEVEL_ICON = {Level.RED: "🔴", Level.ORANGE: "🟠", Level.GREEN: "🟢"}
+LEVEL_BOX = {Level.RED: st.error, Level.ORANGE: st.warning}
+LEVEL_ICON = {Level.RED: "🔴", Level.ORANGE: "🟠"}
 
 
 @st.cache_resource(show_spinner="Loading market data...")
@@ -44,11 +44,17 @@ st.sidebar.title("📊 BIST ScoreCard")
 horizon = Horizon(st.sidebar.radio(
     "Investment horizon", [h.value for h in Horizon], index=1,
     format_func=lambda v: HORIZONS[Horizon(v)].label))
-profile = st.sidebar.radio("Risk profile", list(PROFILES), index=1)
+profile = st.sidebar.radio("Risk profile", PROFILE_NAMES, index=1)
+if profile == DATA_DRIVEN:
+    st.sidebar.caption("Weights chosen by the backtest: searched on 2021-2023, "
+                       "validated on 2024-2026.")
 engine = engines[horizon]
+if horizon == Horizon.SHORT:
+    st.sidebar.warning("In the backtest, 1-month signals were not reliable: after trading "
+                       "costs they did not beat a simple equal-weight portfolio.")
 latest = engine.latest_date()
 st.sidebar.caption(f"Data until {latest.date()} · {len(market.tickers)} BIST100 stocks")
-weights = PROFILES[profile].weights
+weights = get_profile(profile, horizon).weights
 weight_text = " · ".join(f"{p.value} {w:.0%}" for p, w in weights.items())
 st.sidebar.caption(f"Weights of this profile: {weight_text}")
 st.sidebar.caption("Educational project (SEN4015). Not investment advice.")
@@ -192,6 +198,16 @@ with tab_bt:
     c2.metric("BUYs that beat BIST100", f"{hr['BUY hit rate']:.0%}")
     c3.metric("Average result of a BUY vs BIST100", f"{hr['Avg excess BUY']:+.1%}",
               help=f"Measured {HORIZONS[horizon].forward_days} trading days after the decision")
+
+    sig = log.significance()
+    t_value = sig["BUY vs all (t)"]
+    verdict = ("statistically significant — unlikely to be luck" if t_value > 2
+               else "NOT statistically significant — could be luck")
+    st.markdown(f"**Is it luck?** Every month the BUY list beat the average stock by "
+                f"{sig['BUY vs all (mean)']:+.1%} on average (t = {t_value:.1f}): {verdict}.")
+    if profile == DATA_DRIVEN:
+        st.info("The data-driven weights were chosen with 2021-2023 data, so only the "
+                "results from 2024 on are a fair, unseen test.")
 
     real = st.toggle("Remove inflation (show real values)")
     lines = {"Following the BUY list": strategy, "BIST100 index": bt.index_month,

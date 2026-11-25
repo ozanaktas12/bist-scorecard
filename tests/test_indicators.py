@@ -51,11 +51,21 @@ def test_trend_r2_is_one_for_steady_growth_and_minus_one_for_decline():
     assert ind.TrendR2(50)(1 / up)["A"].iloc[-1] == pytest.approx(-1.0)
 
 
-def test_volume_indicators_on_only_rising_prices():
+def test_obv_slope_on_only_rising_prices():
     close = frame(range(1, 30))
     volume = frame([1000] * 29)
-    assert ind.UpVolumeShare(10)(close, volume=volume)["A"].iloc[-1] == pytest.approx(1.0)
     assert ind.OBVSlope(10)(close, volume=volume)["A"].iloc[-1] == pytest.approx(1.0)
+
+
+def test_amihud_is_relative_to_the_median_stock():
+    idx = pd.bdate_range("2024-01-01", periods=30)
+    moves = np.where(np.arange(30) % 2 == 0, 1.01, 0.99)
+    close = pd.DataFrame({"A": 100 * np.cumprod(moves), "B": 100 * np.cumprod(moves),
+                          "C": 100 * np.cumprod(moves)}, index=idx)
+    volume = pd.DataFrame({"A": 1000.0, "B": 1000.0, "C": 250.0}, index=idx)
+    out = ind.AmihudIlliquidity(10)(close, volume=volume).iloc[-1]
+    assert out["A"] == pytest.approx(1.0)
+    assert out["C"] == pytest.approx(4.0, rel=0.05)      # 4x less traded -> 4x the price impact
 
 
 def test_every_indicator_is_registered():

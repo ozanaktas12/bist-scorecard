@@ -225,21 +225,22 @@ class OBVSlope(Indicator):
 
 
 @register
-class UpVolumeShare(Indicator):
-    """Share of the volume traded on up days among all up and down days (0.5 = balanced).
+class AmihudIlliquidity(Indicator):
+    """Price impact of trading (Amihud, 2002): average |daily return| per TL traded.
 
-    A share is used instead of an up/down ratio because the ratio is undefined
-    in a strong trend with (almost) no down days.
+    Inflation inflates TL volumes every year, so the raw value is divided by
+    the median of all stocks on the same day: 1.0 = typical BIST100 liquidity,
+    4.0 = trading moves the price four times as much as for a typical stock.
     """
 
     def __init__(self, window: int):
         self.window = window
 
     def compute(self, close, *, volume: Panel, **_):
-        change = close.diff()
-        up = volume.where(change > 0, 0.0).rolling(self.window, min_periods=self.window).sum()
-        down = volume.where(change < 0, 0.0).rolling(self.window, min_periods=self.window).sum()
-        return up / (up + down).replace(0, np.nan)
+        traded_value = (close * volume).replace(0, np.nan)
+        impact = daily_returns(close).abs() / traded_value
+        average = impact.rolling(self.window, min_periods=self.window // 2).mean()
+        return average.div(average.median(axis=1), axis=0)
 
 
 @register
