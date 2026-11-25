@@ -153,7 +153,8 @@ def build_specs(cfg: HorizonConfig) -> list[MetricSpec]:
                    lambda v: ("Net buying volume" if v > 0 else "Net selling volume") + f" ({v:+.2f})"),
         MetricSpec("liquidity", "Liquidity (price impact)", Pillar.VOLUME,
                    [(0.25, 100.0), (1.0, 60.0), (4.0, 20.0), (10.0, 0.0)],
-                   lambda v: f"Trading moves the price {v:.1f}x as much as for a typical BIST100 stock"),
+                   lambda v: f"Trading moves the price {v:.2f}x as much as for a typical BIST100 stock"
+                   + (" (very liquid)" if v < 0.25 else " (thinly traded)" if v > 4 else "")),
         MetricSpec("rel_volume", "Relative volume (20/60 days)", Pillar.VOLUME,
                    [(0.5, 20.0), (1.0, 50.0), (1.5, 80.0), (2.5, 90.0)],
                    lambda v: f"Recent trading interest is {v:.2f}x normal"),
