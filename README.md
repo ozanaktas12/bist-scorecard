@@ -5,7 +5,9 @@ score, a BUY / HOLD / SELL label, risk flags, a plain-language reading of each
 stock and its valuation next to its sector. Three investment horizons, four
 risk profiles, and a backtest that checks the system's own past decisions.
 
-SEN4015 Advanced Programming with Python — Ozan Aktaş, Demir Bigali, Arda Özköse
+SEN4015 Advanced Programming with Python — Ozan Aktaş, Demir Bigalı, Arda Özköse
+
+Team guide in Turkish (setup, how it works, who does what): [EKIP_REHBERI.md](EKIP_REHBERI.md)
 
 ## Setup
 
@@ -28,7 +30,7 @@ pytest                                                          # run the tests
 |---|---|
 | `scorecard/config.py` | Horizons, risk profiles, decision rules — every tunable number |
 | `scorecard/data/` | Data providers (Yahoo Finance + CSV cache), corporate-action cleaning, point-in-time index membership, valuation ratios |
-| `scorecard/indicators.py` | 15 technical indicators written with NumPy / pandas |
+| `scorecard/indicators.py` | 16 technical indicators written with NumPy / pandas |
 | `scorecard/scoring/` | 16 metrics → 5 pillars → score, decision rules, risk flags, scorecard, plain-language reading |
 | `scorecard/backtest/` | Backtest of past decisions, significance tests, weight calibration |
 | `app/` | Streamlit dashboard (`ui.py` holds colours, chart style and HTML parts) |
