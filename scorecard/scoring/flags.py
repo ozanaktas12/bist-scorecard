@@ -1,10 +1,4 @@
-"""Risk flags: warnings shown next to the decision, they never change it.
-
-The decision is left to the user ("BUY, but be careful"); the flags explain
-*what* to be careful about. Each rule is evaluated on the full history as a
-boolean panel, so the backtest can test whether flagged decisions really
-performed worse.
-"""
+"""Risk flags shown next to the decision. They never change it."""
 from __future__ import annotations
 
 from dataclasses import dataclass

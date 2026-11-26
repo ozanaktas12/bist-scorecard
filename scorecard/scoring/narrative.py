@@ -1,11 +1,4 @@
-"""A short plain-language reading of a scorecard.
-
-The numbers of a scorecard answer "how much"; this module answers "so what".
-Every sentence comes from a rule on a measured value, no text is generated
-freely, so each statement can be traced back to a metric (and tested).
-Order: character (risk), direction (trend), what changed recently,
-comparison with peers, trading interest, valuation, warnings.
-"""
+"""Short plain-language reading of a scorecard. Each sentence comes from a fixed rule."""
 from __future__ import annotations
 
 import math

@@ -1,13 +1,4 @@
-"""The 16 scored metrics and how each raw value becomes a 0-100 score.
-
-A metric is declared once as a `MetricSpec`: which pillar it belongs to, how
-its raw value is computed from the indicators, the piecewise-linear mapping
-from raw value to score, and a sentence that explains the value to the user.
-
-Scores use *absolute*, economically chosen breakpoints (not ranks), so a
-score of 80 means "good" in any market, while the ranking step in
-decision.py decides what is good *relative to the other stocks*.
-"""
+"""The 16 metrics and how each raw value becomes a 0-100 score."""
 from __future__ import annotations
 
 from dataclasses import dataclass
@@ -46,12 +37,7 @@ class MetricSpec:
 
 
 class FeatureBuilder:
-    """Computes the raw value panel of every metric for one horizon.
-
-    Indicators are evaluated once on the full history; because each one is
-    causal, reading row t gives exactly what was knowable on day t. Values of
-    stocks that were not in BIST100 on day t are left empty.
-    """
+    """Raw values of every metric for one horizon; empty for stocks not in BIST100 that day."""
 
     def __init__(self, market: MarketData, cfg: HorizonConfig, min_sector_size: int = 3):
         self.market, self.cfg = market, cfg

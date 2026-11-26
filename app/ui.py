@@ -1,7 +1,4 @@
-"""Visual building blocks of the dashboard: colours, CSS, chart style and small HTML parts.
-
-Kept apart from streamlit_app.py so the page file only describes *what* is shown.
-"""
+"""Colours, CSS and small HTML parts of the dashboard."""
 from __future__ import annotations
 
 from html import escape
@@ -70,11 +67,7 @@ def html(text: str) -> None:
 
 # ------------------------------------------------------------------ charts
 def style(fig: go.Figure, height: int, left: int = 56) -> go.Figure:
-    """One chart style for the whole app (dark, transparent, mono tick labels).
-
-    `left` is fixed rather than automatic: the web font loads after Plotly
-    measures the labels, which otherwise cuts them off.
-    """
+    """Common chart style. The left margin is fixed so tick labels are not cut off."""
     fig.update_layout(
         height=height, paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
         font=dict(family="IBM Plex Sans, sans-serif", color=TEXT, size=13),
@@ -118,11 +111,7 @@ def compact_quote(ticker: str, sector: str, decision: str, score: float, rank: i
 
 
 def zone_bar(score: float, sell_line: float | None, buy_line: float | None) -> None:
-    """One 0-100 bar split into today's SELL, HOLD and BUY zones, with the stock's position.
-
-    The zone edges are the lowest BUY and highest SELL score of the day, so the
-    reader sees how many points the stock is away from the next decision.
-    """
+    """0-100 bar with today's SELL, HOLD and BUY zones and the stock's score."""
     w, top, h = 1000, 30, 14
     x = lambda v: 10 + v * (w - 20) / 100
     sell_end = sell_line if sell_line is not None else 0.0

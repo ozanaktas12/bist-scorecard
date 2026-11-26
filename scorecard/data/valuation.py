@@ -1,18 +1,9 @@
-"""Valuation snapshot (P/E, P/B, dividend yield) shown next to the score.
+"""P/E, P/B and dividend yield, shown next to the score but not part of it.
 
-These numbers are *context*, not part of the score: Yahoo Finance only has
-today's balance sheet, so a valuation pillar could not be backtested without
-using information that was unknown on the past decision dates.
-
-The ratios are computed here from the raw fields instead of taken from
-Yahoo's ready-made ratios. Those are wrong for companies that report in US
-dollars (e.g. Turkish Airlines): Yahoo divides a lira price by a dollar book
-value. Profit and book value are converted to lira first.
-
-Checked against a second data source (Fintables, 26 Nov 2026, 100 stocks):
-P/B was within 20 % for 95 stocks, P/E within 30 % for 57 of 74. P/E differs
-more because sources use different profit periods, so the "cheap or
-expensive" verdict is based on P/B and P/E is shown for information only.
+Ratios are computed from raw Yahoo fields because Yahoo's own ratios are
+wrong for companies that report in USD. Checked against Fintables
+(26 Nov 2026): P/B within 20 % for 95 of 100 stocks, P/E within 30 % for
+57 of 74, so the cheap/expensive verdict uses P/B.
 """
 from __future__ import annotations
 
@@ -84,8 +75,7 @@ def load_valuation(tickers: list[str], cache_file: str | Path, refresh: bool = F
 
 
 def relative_to_sector(ratios: pd.DataFrame, sectors: pd.Series, min_peers: int = 3) -> pd.DataFrame:
-    """Each ratio divided by the median of the stock's sector (or of all stocks
-    when the sector has fewer than `min_peers` values). 1.0 = in line."""
+    """Each ratio divided by its sector median (index median for small sectors)."""
     out = {}
     for col in ("pe", "pb"):
         values = ratios[col]

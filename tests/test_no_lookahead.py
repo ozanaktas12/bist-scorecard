@@ -1,5 +1,4 @@
-"""The most important property of the backtest: a decision made on day t must
-not change when everything after day t is deleted from the data."""
+"""A decision on day t must not change when the data after day t is removed."""
 import numpy as np
 import pytest
 

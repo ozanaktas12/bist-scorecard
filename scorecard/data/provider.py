@@ -1,9 +1,4 @@
-"""Data layer: where price data comes from and how it is cached.
-
-`DataProvider` is an abstract interface; `YFinanceProvider` implements it with
-Yahoo Finance, and `CachedProvider` wraps *any* provider with an on-disk CSV
-cache (decorator pattern), so the rest of the system never knows the source.
-"""
+"""Price data sources. CachedProvider keeps any provider's data on disk."""
 from __future__ import annotations
 
 import logging

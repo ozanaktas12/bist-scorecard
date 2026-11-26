@@ -1,18 +1,7 @@
-"""Backtest: replays the decision process on past dates and checks the outcome.
+"""Backtest: a decision every month using past data only, checked afterwards.
 
-Decisions are taken on the first trading day of every month using only the
-data known at that day's close (guaranteed by the causal indicators, see
-tests/test_no_lookahead.py). The trade happens one day later
-(`execution_lag`), because a real investor can only act after the close.
-Only the *evaluation* looks into the future: a decision is judged by the
-stock's return over the horizon, relative to BIST100.
-
-Two views are produced:
-* decision level - every (date, stock) decision with its later excess return,
-  used for hit rates, score buckets and the flag analysis;
-* portfolio level - a simulated investor who buys the BUY list every month.
-  For 3- and 12-month horizons each monthly portfolio is held for the whole
-  horizon, so K portfolios overlap (Jegadeesh & Titman, 1993).
+Trades happen one day after the decision. For the 3- and 12-month horizons
+the monthly portfolios overlap.
 """
 from __future__ import annotations
 
@@ -37,20 +26,12 @@ def decision_dates(dates: pd.DatetimeIndex, start: str = BACKTEST_START) -> pd.D
 
 
 def forward_return(prices: pd.DataFrame | pd.Series, days: int, lag: int = 0):
-    """Return from the close of day t + lag to the close of day t + lag + days.
-
-    This is the *future outcome* of a decision taken on day t; it is only used
-    to evaluate decisions, never to make them.
-    """
+    """Return from day t + lag to day t + lag + days. Only used to evaluate decisions."""
     return prices.shift(-(lag + days)) / prices.shift(-lag) - 1
 
 
 def newey_west_t(series: pd.Series, lags: int) -> float:
-    """t-statistic of the mean, robust to autocorrelation (Newey & West, 1987).
-
-    Needed because 3- and 12-month outcomes of consecutive monthly decisions
-    overlap, which makes the plain t-test far too optimistic.
-    """
+    """t-statistic of the mean, corrected for overlapping returns (Newey-West)."""
     x = series.dropna().to_numpy(dtype=float)
     n = len(x)
     if n < 3:
@@ -139,30 +120,13 @@ class DecisionLog:
         } for name, g in groups.items()}).T
 
     def flag_effect(self) -> pd.DataFrame:
-        """Do BUY decisions with a red flag perform differently from clean ones?
-
-        Flags are risk warnings, so besides the average the dispersion and the
-        worst decile are reported: a flag may signal *risk* without lowering the mean.
-        """
+        """BUY decisions with and without flags: average, spread and worst 10 %."""
         buys = self._of(Decision.BUY)
         return self._summary({
             "BUY with red flag": buys[buys.red],
             "BUY with orange flag only": buys[~buys.red & buys.orange],
             "BUY without flags": buys[~buys.red & ~buys.orange],
         })
-
-    def flag_rules_effect(self, flag_panels: dict[str, pd.DataFrame]) -> pd.DataFrame:
-        """Outcome of every single flag rule over *all* decisions."""
-        t = self.resolved
-        flagged = {}
-        for key, panel in flag_panels.items():
-            # Look up, for every decision, whether this flag was on for that stock and date.
-            is_on = [bool(panel.at[date, ticker]) for date, ticker in zip(t.date, t.ticker)]
-            flagged[key] = t[is_on]
-        flagged["(no flag at all)"] = t[~t.red & ~t.orange]
-        flagged["(all decisions)"] = t
-        return self._summary(flagged)
-
 
 class Backtester:
     def __init__(self, market: MarketData, rules: DecisionRules = SETTINGS.rules,
@@ -216,11 +180,7 @@ class Backtester:
         return DecisionLog(horizon, profile, table.reset_index())
 
     def metric_ic(self, horizon: Horizon, dates: pd.DatetimeIndex | None = None) -> pd.DataFrame:
-        """Rank correlation between each raw metric and the later excess return.
-
-        Positive = high values were followed by better returns. Computed per
-        decision date (Spearman) and averaged, with a Newey-West t-statistic.
-        """
+        """Average monthly rank correlation of each metric with the later excess return."""
         dates = self.dates if dates is None else dates
         excess = self.excess_returns(horizon).loc[dates]
         engine = self.engines[horizon]
@@ -241,11 +201,7 @@ class Backtester:
 
     # ----------------------------------------------------------- portfolio level
     def portfolio(self, log: DecisionLog, selection: pd.DataFrame | None = None) -> pd.Series:
-        """Monthly returns of an investor who holds every BUY list for the horizon.
-
-        `selection` (bool panel date x ticker) overrides the BUY list, which is
-        how the random-selection benchmark reuses this function.
-        """
+        """Monthly return of holding every BUY list for the horizon (`selection` replaces the BUY list)."""
         if selection is None:
             buys = log.table[log.table.decision == Decision.BUY.value]
             selection = pd.crosstab(buys.date, buys.ticker).astype(bool)
@@ -272,23 +228,6 @@ class Backtester:
         """Benchmark: every stock in BIST100 on the decision day, equal weights, monthly rebalanced."""
         members = self.market.members.loc[self.dates]
         return self.stock_month.where(members).mean(axis=1).rename("Equal-weight BIST100")
-
-    def random_portfolios(self, log: DecisionLog, n: int = 200, seed: int = 7) -> pd.DataFrame:
-        """Same number of stocks as the BUY list each month, but picked at random."""
-        rng = np.random.default_rng(seed)
-        buys = log.table[log.table.decision == Decision.BUY.value]
-        counts = buys.groupby("date").size().reindex(self.dates, fill_value=0)
-        available = log.table.pivot(index="date", columns="ticker", values="score").notna()
-        available = available.reindex(index=self.dates, columns=self.market.tickers, fill_value=False)
-        runs = {}
-        for k in range(n):
-            pick = pd.DataFrame(False, index=self.dates, columns=self.market.tickers)
-            for date, count in counts.items():
-                pool = available.columns[available.loc[date]]
-                if count:
-                    pick.loc[date, rng.choice(pool, size=count, replace=False)] = True
-            runs[k] = self.portfolio(log, selection=pick)
-        return pd.DataFrame(runs)
 
 
 def load_cpi(path: str | None = None) -> pd.Series:

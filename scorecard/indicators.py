@@ -1,12 +1,7 @@
-"""Technical indicators, implemented from scratch with NumPy and pandas.
+"""Technical indicators written with pandas and NumPy.
 
-Every indicator works on a whole panel at once (a DataFrame with one column
-per ticker) and is *causal*: the value on day t uses only data up to day t.
-That property is what makes the backtest free of look-ahead bias, and it is
-verified in tests/test_no_lookahead.py.
-
-Indicators register themselves in `REGISTRY` through the `@register`
-decorator, so the UI and the report can list every available indicator.
+Each value on day t uses only data up to day t (tests/test_no_lookahead.py).
+`@register` adds an indicator to REGISTRY.
 """
 from __future__ import annotations
 
@@ -67,12 +62,7 @@ class EMA(Indicator):
 
 @register
 class TrendR2(Indicator):
-    """Signed R² of a linear fit of log-price on time.
-
-    +1 means a perfectly straight up-trend, -1 a straight down-trend and values
-    near 0 a choppy market without direction. R² equals the squared
-    correlation between log-price and time.
-    """
+    """R² of a straight line through log prices, signed by direction (+1 steady rise, -1 steady fall)."""
 
     def __init__(self, window: int):
         self.window = window
@@ -207,11 +197,7 @@ class Beta(Indicator):
 # -------------------------------------------------------------------------- volume
 @register
 class OBVSlope(Indicator):
-    """Change of On-Balance Volume over `window` days, scaled by the volume traded.
-
-    OBV adds the day's volume on up days and subtracts it on down days. The
-    result lies in [-1, 1]: +1 means every share in the window traded on an up day.
-    """
+    """Change in On-Balance Volume over the window divided by the volume traded (-1 to 1)."""
 
     def __init__(self, window: int):
         self.window = window
@@ -226,13 +212,7 @@ class OBVSlope(Indicator):
 
 @register
 class AmihudIlliquidity(Indicator):
-    """Price impact of trading (Amihud, 2002): average |daily return| per TL traded.
-
-    Inflation inflates TL volumes every year, so the raw value is divided by
-    the median of the index members on the same day: 1.0 = typical BIST100
-    liquidity, 4.0 = trading moves the price four times as much as for a
-    typical stock.
-    """
+    """Amihud (2002): |daily return| per TL traded, divided by the index median that day."""
 
     def __init__(self, window: int):
         self.window = window
@@ -275,11 +255,7 @@ class Alpha(Indicator):
 
 @register
 class SectorRelativeReturn(Indicator):
-    """Return minus the median return of the *other* index members in the same sector.
-
-    On days when a sector has fewer than `min_size` members (the stock itself
-    included), the stock is compared with the index instead.
-    """
+    """Return minus the median of the other sector members (the index if the sector is too small)."""
 
     def __init__(self, window: int, skip: int = 0, min_size: int = 3):
         self.window, self.skip, self.min_size = window, skip, min_size

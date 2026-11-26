@@ -1,18 +1,13 @@
-"""Full backtest of BIST ScoreCard; writes every table to results/ for the report.
-
-    python scripts/run_backtest.py
-"""
+"""Runs the backtest and saves every table to results/:  python scripts/run_backtest.py"""
 from __future__ import annotations
 
-from dataclasses import replace
 from pathlib import Path
-
 
 import pandas as pd
 
-from scorecard.backtest import Backtester, DecisionLog, calibrate, load_cpi, performance, real_returns
+from scorecard.backtest import Backtester, calibrate, load_cpi, performance, real_returns
 from scorecard.backtest.calibration import TEST_START
-from scorecard.config import PROFILE_NAMES, SETTINGS, Horizon
+from scorecard.config import PROFILE_NAMES, Horizon
 from scorecard.data import MarketData, load_market_data, load_periods
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -118,19 +113,7 @@ def main() -> None:
     save(pd.concat({h.value: bt.metric_ic(h) for h in Horizon}, axis=1), "metric_ic",
          "Rank IC of every metric with the later excess return (t = Newey-West)")
 
-    # 4. Random selection: same number of stocks, picked by chance
-    random_rows = {}
-    for p in ("Balanced", "Data-driven"):
-        log = logs[(Horizon.MEDIUM, p)]
-        runs = bt.random_portfolios(log, n=300)
-        random_cagr = runs.apply(lambda r: performance(r)["CAGR"])
-        cagr = performance(bt.portfolio(log))["CAGR"]
-        random_rows[p] = {"strategy CAGR": cagr, "random median": random_cagr.median(),
-                          "random 95th pct": random_cagr.quantile(0.95),
-                          "share of random runs beaten": (random_cagr < cagr).mean()}
-    save(pd.DataFrame(random_rows).T, "random_benchmark", "Medium horizon vs 300 random portfolios")
-
-    # 5. Year by year
+    # 4. Year by year
     yearly = {}
     for p in ("Balanced", "Data-driven"):
         monthly = bt.portfolio(logs[(Horizon.MEDIUM, p)])
@@ -139,49 +122,16 @@ def main() -> None:
     yearly["Equal-weight"] = ew.groupby(ew.index.year).apply(lambda r: (1 + r).prod() - 1)
     save(pd.DataFrame(yearly), "yearly", "Calendar years (medium horizon)")
 
-    # 6. Score quintiles
+    # 5. Score quintiles
     quint = pd.concat({f"{h.value}/{p}": logs[(h, p)].by_score_bucket()["mean"]
                        for h in Horizon for p in ("Balanced", "Data-driven")}, axis=1)
     save(quint, "score_quintiles", "Average excess return by score quintile")
 
-    # 7. Sensitivity of the top-fraction rule
-    sens = {}
-    for frac in (0.10, 0.20, 0.30):
-        rules = replace(SETTINGS.rules, top_fraction=frac, bottom_fraction=frac)
-        for p in ("Balanced", "Data-driven"):
-            log = bt.decision_log(Horizon.MEDIUM, p, rules=rules)
-            sens[(f"top {frac:.0%}", p)] = {
-                "BUY decisions": log.hit_rates()["BUY decisions"],
-                "BUY vs all": log.significance()["BUY vs all (mean)"],
-                "CAGR": performance(bt.portfolio(log))["CAGR"],
-            }
-    save(pd.DataFrame(sens).T, "sensitivity_top_fraction", "Sensitivity of the top-fraction rule (medium)")
-
-    # 8. SELL rule: purely relative (current) vs. the earlier "score < 40 OR worst 20 %"
-    sell_rows = {}
-    for h in Horizon:
-        for p in PROFILE_NAMES:
-            current = logs[(h, p)]
-            earlier = current.table.copy()
-            earlier.loc[(earlier.score < 40) & (earlier.decision != "BUY"), "decision"] = "SELL"
-            for name, log in (("worst 20 %", current),
-                              ("score < 40 OR worst 20 %", DecisionLog(h, p, earlier))):
-                hr, sig = log.hit_rates(), log.significance()
-                sell_rows[(h.value, p, name)] = {
-                    "SELL share": (log.table.decision == "SELL").mean(),
-                    "SELL hit rate": hr["SELL hit rate"],
-                    "Avg excess SELL": hr["Avg excess SELL"],
-                    "BUY vs SELL": sig["BUY vs SELL (mean)"],
-                    "t (BUY vs SELL)": sig["BUY vs SELL (t)"],
-                }
-    save(pd.DataFrame(sell_rows).T, "sell_rule", "SELL rule comparison")
-
-    # 9. Risk flags
+    # 6. Risk flags
     main_log = logs[(Horizon.MEDIUM, "Balanced")]
     save(main_log.flag_effect(), "flags_buy", "BUY decisions with / without flags (medium, Balanced)")
-    save(main_log.flag_rules_effect(bt.flags.panels), "flags_rules", "Every flag rule, all decisions")
 
-    # 10. Data cleaning
+    # 7. Data cleaning
     save(pd.DataFrame([a.__dict__ for a in adjustments]), "corporate_actions",
          "Corporate-action corrections")
 

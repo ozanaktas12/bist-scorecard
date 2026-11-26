@@ -13,12 +13,7 @@ from .metrics import FeatureBuilder, MetricSpec
 
 
 def decide(total: pd.DataFrame, rules: DecisionRules = SETTINGS.rules) -> pd.DataFrame:
-    """Cross-sectional decision for every date.
-
-    BUY  = score >= buy_min_score AND among the best `top_fraction` of that day
-    SELL = among the worst `bottom_fraction` of that day
-    HOLD = everything else; stocks without a score get no decision.
-    """
+    """BUY: score >= buy_min_score and in the top fraction. SELL: bottom fraction. Rest: HOLD."""
     pct_rank = total.rank(axis=1, pct=True, ascending=True)
     buy = (total >= rules.buy_min_score) & (pct_rank > 1 - rules.top_fraction)
     sell = pct_rank <= rules.bottom_fraction
@@ -59,11 +54,7 @@ class ScoreCard:
         return [f for f in self.flags if f.level == Level.RED]
 
     def strengths(self, n: int = 3) -> list[MetricResult]:
-        """Metrics where this stock stands out from the others, not just scores high.
-
-        Ranking by the absolute score made "low beta" the top strength of most
-        stocks in a falling market; the percentile shows what is special.
-        """
+        """Metrics where this stock ranks best compared with the others."""
         good = [m for m in self.metrics if m.score >= 50 and m.percentile >= 0.5]
         return sorted(good, key=lambda m: -m.percentile)[:n]
 

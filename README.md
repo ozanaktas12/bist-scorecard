@@ -18,7 +18,6 @@ pip install -r requirements.txt
 
 ```bash
 streamlit run app/streamlit_app.py                              # the dashboard
-python -m scorecard ASELS --horizon medium --profile Balanced   # scorecard of one stock
 python scripts/run_backtest.py                                  # every table in results/
 pytest                                                          # run the tests
 ```

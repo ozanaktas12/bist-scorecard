@@ -1,11 +1,7 @@
-"""Data cleaning for Borsa Istanbul price series.
+"""Fixes corporate actions (e.g. bonus shares) that Yahoo prices miss.
 
-Yahoo Finance sometimes misses corporate actions (e.g. bonus share issues,
-"bedelsiz sermaye artırımı"), which shows up as a one-day jump far beyond the
-+/-10 % daily price limit of Borsa Istanbul. A genuine move of that size is
-only possible when the *whole market* gaps (for example on 15 Feb 2023, when
-the exchange reopened after the earthquake closure), so a jump is treated as
-a data error only if it is not explained by the index move on the same day.
+A daily jump beyond the +/-10 % price limit is a data error, unless the index
+jumped the same day (e.g. 15 Feb 2023, after the earthquake closure).
 """
 from __future__ import annotations
 

@@ -42,11 +42,9 @@ def load_periods(cfg: DataConfig = SETTINGS.data) -> dict[pd.Timestamp, frozense
 
 def load_market_data(provider: DataProvider | None = None,
                      cfg: DataConfig = SETTINGS.data) -> tuple[MarketData, list[Adjustment]]:
-    """Download (or read from cache), align and clean the data of every stock that
-    was in BIST100 at some point, and mark on which days each one was a member.
+    """Load and clean the prices of every stock that was ever in BIST100.
 
-    Returns the clean data and the list of corporate-action corrections that
-    were applied, so they can be reported.
+    Also returns the corporate-action corrections that were applied.
     """
     periods = load_periods(cfg)
     tickers = ever_members(periods)

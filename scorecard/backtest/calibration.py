@@ -1,13 +1,7 @@
-"""Data-driven pillar weights, tested out of sample.
+"""Data-driven weights: searched on 2021-2023, tested on 2024 onwards.
 
-The hand-made profiles use weights chosen by judgement. Here the weights are
-searched on a *training* period (2021-2023) and then evaluated on a *test*
-period (2024 onwards) that the search never saw. If the calibrated weights
-only shine in the training years, they were overfitted.
-
-Objective: the average monthly rank correlation (IC) between the total score
-and the later excess return. It uses every stock, not only the 20 BUYs, so it
-is far less noisy than optimising the BUY return directly.
+The search maximises the average monthly rank correlation (IC) between
+the score and the later excess return.
 """
 from __future__ import annotations
 

@@ -1,14 +1,7 @@
-"""Which stocks were in BIST100 on which day (point-in-time universe).
+"""BIST100 members on each past date.
 
-Scoring the stocks that are in the index *today* over 2021-2026 would test
-only the survivors: companies that fell out of the index, often after a
-crash, would be missing, and the backtest would look better than reality.
-
-Borsa Istanbul changes the index every quarter and announces the stocks that
-enter and leave. Starting from today's official list and undoing those
-changes one period at a time gives the exact list of every past period:
-
-    members before a change = members after - added + removed
+Starts from today's official list and undoes the quarterly changes:
+members before a change = members after - added + removed
 """
 from __future__ import annotations
 
@@ -23,11 +16,7 @@ class MembershipError(ValueError):
 
 def membership_periods(current: list[str], changes: pd.DataFrame,
                        size: int | None = INDEX_SIZE) -> dict[pd.Timestamp, frozenset[str]]:
-    """Member list valid from each effective date on (the oldest gets `Timestamp.min`).
-
-    `changes` has the columns effective_date, action ('add' / 'remove'), ticker.
-    Every step is checked, so a wrong or missing announcement cannot slip in silently.
-    """
+    """Member list valid from each change date (the oldest gets Timestamp.min). Every step is checked."""
     members = set(current)
     if size is not None and len(members) != size:
         raise MembershipError(f"the current list has {len(members)} stocks, not {size}")

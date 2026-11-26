@@ -1,8 +1,4 @@
-"""Central configuration: investment horizons, risk profiles and decision rules.
-
-Every tunable number of the system lives in this file so that the logic
-modules stay free of "magic numbers" and the backtest can vary them.
-"""
+"""All settings: horizons, risk profiles and decision rules."""
 from __future__ import annotations
 
 from dataclasses import dataclass, field
@@ -31,11 +27,7 @@ class Decision(str, Enum):
 
 @dataclass(frozen=True)
 class HorizonConfig:
-    """Look-back windows (in trading days) that define one investment horizon.
-
-    The horizon changes *which windows* the indicators use and *how far ahead*
-    a decision is evaluated; the scoring logic itself is identical.
-    """
+    """Look-back windows (in trading days) of one horizon."""
 
     horizon: Horizon
     label: str
@@ -111,9 +103,8 @@ PROFILES: dict[str, RiskProfile] = {
 }
 
 
-# Weights found by scripts/run_backtest.py (scorecard/backtest/calibration.py):
-# searched on 2021-2023 decisions only, then validated on 2024-2026, where they
-# beat all three hand-made profiles in every horizon. They differ per horizon.
+# Weights found by the backtest (calibration.py): searched on 2021-2023,
+# checked on 2024-2026. They differ per horizon.
 DATA_DRIVEN = "Data-driven"
 CALIBRATED_WEIGHTS: dict[Horizon, dict[Pillar, float]] = {
     Horizon.SHORT: {Pillar.TREND: 0.05, Pillar.MOMENTUM: 0.05, Pillar.RISK: 0.80,
@@ -137,11 +128,9 @@ PROFILE_NAMES = [*PROFILES, DATA_DRIVEN]
 
 @dataclass(frozen=True)
 class DecisionRules:
-    """BUY needs an absolute AND a relative condition; SELL is purely relative.
+    """BUY needs a minimum score and a top rank; SELL is the bottom of the ranking.
 
-    An absolute SELL threshold (score < 40) was tested too: in a falling market
-    it labelled more than half of the index SELL, and the backtest showed no
-    gain from it (results/sell_rule.csv), so it was removed.
+    A fixed SELL threshold (score < 40) was tried and gave no improvement.
     """
 
     buy_min_score: float = 60.0
