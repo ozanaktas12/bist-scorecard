@@ -7,12 +7,13 @@ from __future__ import annotations
 from dataclasses import replace
 from pathlib import Path
 
+
 import pandas as pd
 
 from scorecard.backtest import Backtester, DecisionLog, calibrate, load_cpi, performance, real_returns
 from scorecard.backtest.calibration import TEST_START
 from scorecard.config import PROFILE_NAMES, SETTINGS, Horizon
-from scorecard.data import load_market_data
+from scorecard.data import MarketData, load_market_data, load_periods
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "results"
@@ -26,8 +27,49 @@ def save(table: pd.DataFrame, name: str, title: str) -> None:
     print(table.round(3).to_string())
 
 
+def todays_list_only(market: MarketData) -> MarketData:
+    """The naive universe: today's members, treated as members on every past day."""
+    today = market.members_on(market.dates[-1])
+    return MarketData(market.close[today], market.volume[today], market.index_close,
+                      market.sectors[today])
+
+
+def survivorship(market: MarketData) -> pd.DataFrame:
+    """Same system, two universes: how much does using today's list flatter the results?"""
+    rows = {}
+    for name, data in (("today's list", todays_list_only(market)), ("point-in-time", market)):
+        bt = Backtester(data)
+        ew = bt.equal_weight_universe()
+        for p in ("Balanced", "Data-driven"):
+            log = bt.decision_log(Horizon.MEDIUM, p)
+            monthly = bt.portfolio(log)
+            rows[(p, name)] = {
+                "BUY hit rate": log.hit_rates()["BUY hit rate"],
+                "t (BUY vs all)": log.significance()["BUY vs all (t)"],
+                "CAGR": performance(monthly)["CAGR"],
+                "equal-weight CAGR": performance(ew)["CAGR"],
+                "CAGR vs equal-weight": performance(monthly, ew)["CAGR vs benchmark"],
+            }
+    return pd.DataFrame(rows).T
+
+
+def universe_table(market: MarketData) -> pd.DataFrame:
+    periods = load_periods()
+    rows = {}
+    for start, members in periods.items():
+        rows["earlier" if start == pd.Timestamp.min else str(start.date())] = {
+            "members": len(members),
+            "with price data": len(members & set(market.tickers)),
+            "still in today's list": len(members & set(market.members_on(market.dates[-1]))),
+        }
+    return pd.DataFrame(rows).T
+
+
 def main() -> None:
     market, adjustments = load_market_data()
+    save(universe_table(market), "universe", "BIST100 members per index period")
+    print("Past members without price data (delisted):", list(market.unavailable) or "none")
+    save(survivorship(market), "survivorship", "Today's list vs point-in-time universe (medium horizon)")
     bt = Backtester(market)
     cpi = load_cpi()
     ew = bt.equal_weight_universe()

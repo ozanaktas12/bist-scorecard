@@ -32,7 +32,10 @@ CSS = f"""
 .quote .decision {{ font: 600 2.6rem/1 {MONO}; }}
 .quote .figure {{ font: 500 2.6rem/1 {MONO}; }}
 .quote .unit {{ color: {MUTED}; font-size: .95rem; margin-left: .35rem; }}
-.small-quote .ticker, .small-quote .decision, .small-quote .figure {{ font-size: 1.6rem; }}
+.compact .ticker {{ font: 600 1.7rem/1.1 {MONO}; }}
+.compact .line {{ font: 500 1.05rem/1.6 {MONO}; margin: .15rem 0 .5rem; }}
+.compact .line .unit {{ color: {MUTED}; }}
+.compact .text {{ font-size: .95rem; line-height: 1.55; margin-bottom: .7rem; }}
 .strip-note {{ color: {MUTED}; font-size: .85rem; margin: -.2rem 0 1rem; }}
 .flag {{ border-left: 3px solid; padding: .35rem 0 .35rem .8rem; margin-bottom: .55rem; }}
 .flag b {{ display: block; font-weight: 600; }}
@@ -48,6 +51,11 @@ CSS = f"""
 .summary {{ font-size: 1.05rem; line-height: 1.7; max-width: 48rem; }}
 .summary .mono {{ color: {TEXT}; font-weight: 600; }}
 .muted {{ color: {MUTED}; }}
+.reading {{ font-size: 1.08rem; line-height: 1.65; max-width: 50rem; margin: .2rem 0 1.1rem;
+            padding-left: .9rem; border-left: 3px solid {AMBER}; }}
+.valuation {{ font: .92rem/1.75 {MONO}; white-space: nowrap; }}
+.valuation .k {{ color: {MUTED}; display: inline-block; width: 8.5rem; }}
+.valuation .peer {{ color: {MUTED}; }}
 </style>
 """
 
@@ -85,11 +93,10 @@ def show(fig: go.Figure) -> None:
 
 
 # --------------------------------------------------------------- html parts
-def quote(ticker: str, sector: str, decision: str, score: float, rank: int, size: int,
-          small: bool = False) -> None:
+def quote(ticker: str, sector: str, decision: str, score: float, rank: int, size: int) -> None:
     """The headline row: ticker, decision, score and rank, like a line on a quote board."""
     color = DECISION_COLORS[decision]
-    html(f"""<div class="quote {'small-quote' if small else ''}">
+    html(f"""<div class="quote">
       <div><div class="ticker">{ticker}</div><div class="sector">{escape(sector)}</div></div>
       <div><div class="decision" style="color:{color}">{decision}</div>
            <div class="sector">decision</div></div>
@@ -100,37 +107,56 @@ def quote(ticker: str, sector: str, decision: str, score: float, rank: int, size
     </div>""")
 
 
-def score_strip(scores, selected: float, sell_line: float | None, buy_line: float | None) -> None:
-    """Every stock's score as a thin tick on a 0-100 line; the chosen stock in amber.
+def compact_quote(ticker: str, sector: str, decision: str, score: float, rank: int, size: int,
+                  sentences: list[str]) -> None:
+    """Narrow version of the quote for the comparison columns, with the stock's reading."""
+    html(f"""<div class="compact">
+      <div class="ticker">{ticker}</div><div class="sector muted">{escape(sector)}</div>
+      <div class="line"><span style="color:{DECISION_COLORS[decision]}">{decision}</span>&ensp;
+        {score:.1f}<span class="unit">/100</span>&ensp;#{rank}<span class="unit"> of {size}</span></div>
+      <div class="text">{escape(" ".join(sentences))}</div></div>""")
 
-    The shaded ends show where SELL and BUY decisions start on this date, so the
-    reader sees at a glance how far the stock is from the next decision.
+
+def zone_bar(score: float, sell_line: float | None, buy_line: float | None) -> None:
+    """One 0-100 bar split into today's SELL, HOLD and BUY zones, with the stock's position.
+
+    The zone edges are the lowest BUY and highest SELL score of the day, so the
+    reader sees how many points the stock is away from the next decision.
     """
-    w, h, top, base = 1000, 74, 14, 46
-    x = lambda s: 10 + s * (w - 20) / 100
-    parts = [f'<line x1="{x(0)}" y1="{base}" x2="{x(100)}" y2="{base}" stroke="{RULE}"/>']
+    w, top, h = 1000, 30, 14
+    x = lambda v: 10 + v * (w - 20) / 100
+    sell_end = sell_line if sell_line is not None else 0.0
+    buy_start = buy_line if buy_line is not None else 100.0
+    zones = [(0, sell_end, DECISION_COLORS["SELL"], .55), (sell_end, buy_start, RULE, 1.0),
+             (buy_start, 100, DECISION_COLORS["BUY"], .55)]
+    parts = [f'<rect x="{x(a):.1f}" y="{top}" width="{x(b) - x(a):.1f}" height="{h}" '
+             f'fill="{color}" opacity="{op}"/>' for a, b, color, op in zones if b > a]
+    label = lambda v, text, anchor: (f'<text x="{x(v):.1f}" y="{top - 9}" fill="{MUTED}" '
+                                     f'font-size="14" font-family="{MONO}" text-anchor="{anchor}">{text}</text>')
     if sell_line is not None:
-        parts.append(f'<rect x="{x(0)}" y="{top}" width="{x(sell_line) - x(0)}" '
-                     f'height="{base - top}" fill="{DECISION_COLORS["SELL"]}" opacity=".10"/>')
+        parts.append(label(0, f"SELL ≤ {sell_line:.1f}", "start"))
+    parts.append(label((sell_end + buy_start) / 2, "HOLD", "middle"))
     if buy_line is not None:
-        parts.append(f'<rect x="{x(buy_line)}" y="{top}" width="{x(100) - x(buy_line)}" '
-                     f'height="{base - top}" fill="{DECISION_COLORS["BUY"]}" opacity=".12"/>')
-    for s in scores:
-        parts.append(f'<line x1="{x(s):.1f}" y1="{base - 16}" x2="{x(s):.1f}" y2="{base}" '
-                     f'stroke="{MUTED}" stroke-width="1.4" opacity=".7"/>')
-    parts.append(f'<line x1="{x(selected):.1f}" y1="{top - 6}" x2="{x(selected):.1f}" '
-                 f'y2="{base + 4}" stroke="{AMBER}" stroke-width="3"/>')
-    for tick in (0, 25, 50, 75, 100):
-        anchor = "start" if tick == 0 else "end" if tick == 100 else "middle"
-        parts.append(f'<text x="{x(tick)}" y="{base + 22}" fill="{MUTED}" font-size="13" '
-                     f'font-family="{MONO}" text-anchor="{anchor}">{tick}</text>')
-    html(f'<svg viewBox="0 0 {w} {h}" width="100%" role="img" '
-         f'aria-label="Scores of all stocks, selected stock at {selected:.1f}">{"".join(parts)}</svg>')
+        parts.append(label(100, f"BUY ≥ {buy_line:.1f}", "end"))
+    parts.append(f'<line x1="{x(score):.1f}" y1="{top - 4}" x2="{x(score):.1f}" y2="{top + h + 4}" '
+                 f'stroke="{AMBER}" stroke-width="4"/>')
+    anchor = "start" if score < 8 else "end" if score > 92 else "middle"
+    parts.append(f'<text x="{x(score):.1f}" y="{top + h + 24}" fill="{AMBER}" font-size="15" '
+                 f'font-weight="600" font-family="{MONO}" text-anchor="{anchor}">{score:.1f}</text>')
+    html(f'<svg viewBox="0 0 {w} {top + h + 32}" width="100%" role="img" '
+         f'aria-label="Score {score:.1f} on a 0 to 100 bar with SELL, HOLD and BUY zones">'
+         f'{"".join(parts)}</svg>')
 
-    sell_text = f"SELL up to {sell_line:.1f}" if sell_line is not None else "no SELL"
-    buy_text = (f"BUY from {buy_line:.1f}" if buy_line is not None
-                else "no stock qualifies for BUY today (needs 60+ and the top 20 %)")
-    html(f'<div class="strip-note">Each tick is one BIST100 stock. Today: {sell_text}, {buy_text}.</div>')
+    if buy_line is not None and score >= buy_line:
+        note = f"In the BUY zone, {score - buy_line:.1f} points above its lower edge."
+    elif sell_line is not None and score <= sell_line:
+        note = f"In the SELL zone, {sell_line - score:.1f} points below the HOLD zone."
+    else:
+        to_buy = (f"{buy_line - score:.1f} points short of BUY" if buy_line is not None
+                  else "no stock qualifies for BUY today (needs 60+ and the top 20 %)")
+        above = f", {score - sell_line:.1f} above SELL" if sell_line is not None else ""
+        note = to_buy[0].upper() + to_buy[1:] + above + "."
+    html(f'<div class="strip-note">{note} Zone edges are today\'s lowest BUY and highest SELL score.</div>')
 
 
 def flags(rules) -> None:
@@ -164,3 +190,35 @@ def weights(weights_by_pillar: dict) -> None:
     rows = "<br>".join(f"{p.value:<18}<b>{w:>4.0%}</b>".replace(" ", "&nbsp;")
                        for p, w in weights_by_pillar.items())
     html(f'<div class="weights">{rows}</div>')
+
+
+def reading(sentences: list[str]) -> None:
+    """The plain-language summary of the stock (scorecard/scoring/narrative.py)."""
+    html(f'<div class="reading">{escape(" ".join(sentences))}</div>')
+
+
+def valuation(row: dict | None, as_of: str) -> None:
+    if row is None:
+        html('<p class="muted">No valuation data.</p>')
+        return
+
+    where = "sector" if row.get("peer_group", "sector") == "sector" else "index"
+
+    def fmt(value, peer=None, pattern="{:.2f}"):
+        if value != value:   # NaN
+            return "n/a"
+        text = pattern.format(value)
+        if peer is not None and peer == peer:
+            text += f'&ensp;<span class="peer">{where} {pattern.format(peer)}</span>'
+        return text
+
+    pe = "loss" if row["loss_making"] else fmt(row["pe"], row["pe_peer"])
+    html(f"""<div class="valuation">
+      <span class="k">P/B</span>{fmt(row["pb"], row["pb_peer"])}<br>
+      <span class="k">P/E</span>{pe}<br>
+      <span class="k">Dividend yield</span>{fmt(row["dividend_yield"], pattern="{:.1%}")}
+    </div>""")
+    st.caption(f"Grey: median of its sector in BIST100 (of the whole index when the sector "
+               f"has fewer than 3 stocks). Yahoo Finance, {as_of}. Context only, not part of the score: the backtest "
+               "cannot check it because past balance sheets are not available. "
+               "P/E can differ between sources (different profit periods).")

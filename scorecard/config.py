@@ -118,10 +118,10 @@ DATA_DRIVEN = "Data-driven"
 CALIBRATED_WEIGHTS: dict[Horizon, dict[Pillar, float]] = {
     Horizon.SHORT: {Pillar.TREND: 0.05, Pillar.MOMENTUM: 0.05, Pillar.RISK: 0.80,
                     Pillar.RELATIVE: 0.05, Pillar.VOLUME: 0.05},
-    Horizon.MEDIUM: {Pillar.TREND: 0.05, Pillar.MOMENTUM: 0.10, Pillar.RISK: 0.65,
-                     Pillar.RELATIVE: 0.05, Pillar.VOLUME: 0.15},
-    Horizon.LONG: {Pillar.TREND: 0.10, Pillar.MOMENTUM: 0.25, Pillar.RISK: 0.55,
-                   Pillar.RELATIVE: 0.05, Pillar.VOLUME: 0.05},
+    Horizon.MEDIUM: {Pillar.TREND: 0.05, Pillar.MOMENTUM: 0.05, Pillar.RISK: 0.55,
+                     Pillar.RELATIVE: 0.05, Pillar.VOLUME: 0.30},
+    Horizon.LONG: {Pillar.TREND: 0.05, Pillar.MOMENTUM: 0.05, Pillar.RISK: 0.40,
+                   Pillar.RELATIVE: 0.05, Pillar.VOLUME: 0.45},
 }
 
 
@@ -153,7 +153,10 @@ class DecisionRules:
 class DataConfig:
     start_date: str = "2019-01-01"
     index_ticker: str = "XU100"
-    universe_file: str = "data/universe/bist100.csv"
+    universe_file: str = "data/universe/bist100.csv"          # official list of the current quarter
+    changes_file: str = "data/universe/bist100_changes.csv"   # quarterly additions / removals since 2021
+    renames_file: str = "data/universe/ticker_renames.csv"    # old code -> today's code
+    sectors_file: str = "data/universe/bist_all.csv"          # sector of every listed stock
     cache_dir: str = "data/cache"
     daily_limit: float = 0.25              # beyond the widest BIST price limit ever used (+/-20 %)
     market_move_tolerance: float = 0.08    # jump vs. index move to be called a corporate action

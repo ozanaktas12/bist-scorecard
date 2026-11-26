@@ -49,7 +49,8 @@ class FeatureBuilder:
     """Computes the raw value panel of every metric for one horizon.
 
     Indicators are evaluated once on the full history; because each one is
-    causal, reading row t gives exactly what was knowable on day t.
+    causal, reading row t gives exactly what was knowable on day t. Values of
+    stocks that were not in BIST100 on day t are left empty.
     """
 
     def __init__(self, market: MarketData, cfg: HorizonConfig, min_sector_size: int = 3):
@@ -60,7 +61,7 @@ class FeatureBuilder:
 
     def _compute_raw(self) -> dict[str, pd.DataFrame]:
         c, m, cfg = self.market.close, self.market, self.cfg
-        ctx = dict(index_close=m.index_close, volume=m.volume, sectors=m.sectors)
+        ctx = dict(index_close=m.index_close, volume=m.volume, sectors=m.sectors, members=m.members)
         short_ma, long_ma = ind.SMA(cfg.short_ma)(c), ind.SMA(cfg.long_ma)(c)
         raw = {
             # Trend
@@ -90,7 +91,8 @@ class FeatureBuilder:
         }
         missing = {s.key for s in self.specs} ^ set(raw)
         assert not missing, f"metric definitions and raw values differ: {missing}"
-        return raw
+        # Only index members of that day are scored (and ranked against each other).
+        return {k: v.where(m.members) for k, v in raw.items()}
 
     def scores(self) -> dict[str, pd.DataFrame]:
         return {s.key: piecewise_score(self.raw[s.key], s.points) for s in self.specs}

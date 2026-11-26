@@ -1,0 +1,5 @@
+old_ticker,new_ticker,date,source_url
+EFORC,EFOR,2025-11-03,https://www.borsagundem.com.tr/efor-yatirimin-islem-kodu-degisiyor
+KOZAA,TRMET,2025-11-24,https://borsaistanbul.com/duyuru/15263/kozaa-kozal-ve-ipeke-paylarinda-ve-kozaa-ve-kozal-pay-vadeli-islem-sozlesmelerinde-yapilacak-islem-kodu-ve-sozlesme-kodu-degisiklikleri-hk-duyuru
+KOZAL,TRALT,2025-11-24,https://borsaistanbul.com/duyuru/15263/kozaa-kozal-ve-ipeke-paylarinda-ve-kozaa-ve-kozal-pay-vadeli-islem-sozlesmelerinde-yapilacak-islem-kodu-ve-sozlesme-kodu-degisiklikleri-hk-duyuru
+IPEKE,TRENJ,2025-11-24,https://borsaistanbul.com/duyuru/15263/kozaa-kozal-ve-ipeke-paylarinda-ve-kozaa-ve-kozal-pay-vadeli-islem-sozlesmelerinde-yapilacak-islem-kodu-ve-sozlesme-kodu-degisiklikleri-hk-duyuru

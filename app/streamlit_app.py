@@ -9,8 +9,10 @@ import ui
 from scorecard import indicators as ind
 from scorecard.backtest import Backtester, load_cpi, performance, real_returns
 from scorecard.config import DATA_DRIVEN, HORIZONS, PROFILE_NAMES, Decision, Horizon, Pillar, get_profile
-from scorecard.data import load_market_data
+from scorecard.data import PROJECT_ROOT, load_market_data
+from scorecard.data.valuation import load_valuation, relative_to_sector
 from scorecard.scoring import FlagEngine, Level, ScoreEngine
+from scorecard.scoring.narrative import describe
 
 st.set_page_config(page_title="BIST ScoreCard", page_icon=":material/monitoring:", layout="wide")
 ui.inject_css()
@@ -21,7 +23,11 @@ def load():
     market, adjustments = load_market_data()
     flags = FlagEngine(market)
     engines = {h: ScoreEngine(market, h, flags) for h in Horizon}
-    return market, adjustments, flags, engines
+    members = market.members_on(market.dates[-1])
+    ratios = load_valuation(members, PROJECT_ROOT / "data/cache/valuation.csv.gz")
+    valuation = ratios.join(relative_to_sector(ratios, market.sectors[members]))
+    valuation.attrs["as_of"] = ratios.attrs["as_of"]
+    return market, adjustments, flags, engines, valuation
 
 
 @st.cache_resource(show_spinner="Running the backtest...")
@@ -30,7 +36,7 @@ def load_backtest():
     return Backtester(market)
 
 
-market, adjustments, flags, engines = load()
+market, adjustments, flags, engines, valuation = load()
 
 # ------------------------------------------------------------------ sidebar
 with st.sidebar:
@@ -42,13 +48,13 @@ with st.sidebar:
     if profile == DATA_DRIVEN:
         st.caption("Weights chosen by the backtest: searched on 2021-2023, tested on 2024-2026.")
     if horizon == Horizon.SHORT:
-        st.warning("In the backtest, 1-month signals did not beat a simple equal-weight "
-                   "portfolio after trading costs.")
+        st.warning("In the backtest, 1-month signals were weak and not statistically "
+                   "significant: read them with caution.")
     ui.weights(get_profile(profile, horizon).weights)
     engine = engines[horizon]
     latest = engine.latest_date()
     st.divider()
-    st.caption(f"Prices until {latest:%d %b %Y}, {len(market.tickers)} stocks. "
+    st.caption(f"Prices until {latest:%d %b %Y}, {len(market.members_on(latest))} stocks. "
                "Student project for SEN4015, not investment advice.")
 
 tab_card, tab_rank, tab_compare, tab_bt = st.tabs(["Scorecard", "Ranking", "Compare", "Backtest"])
@@ -100,7 +106,9 @@ with tab_card:
 
     ui.quote(card.ticker, card.sector, card.decision.value, card.total, card.rank,
              card.universe_size)
-    ui.score_strip(ranking.Score, card.total, *cutoffs(ranking))
+    value_row = valuation.loc[ticker].to_dict() if ticker in valuation.index else None
+    ui.reading(describe(card, value_row))
+    ui.zone_bar(card.total, *cutoffs(ranking))
 
     left, right = st.columns([1.35, 1], gap="large")
     with left:
@@ -112,6 +120,8 @@ with tab_card:
         if card.decision == Decision.BUY and card.red_flags:
             st.markdown("**BUY, but be careful.** The score is high, yet a red flag points "
                         "to a serious risk. The final decision is yours.")
+        st.markdown("**Valuation**")
+        ui.valuation(value_row, valuation.attrs["as_of"])
 
     st.markdown("**Price**")
     ui.show(price_chart(ticker))
@@ -142,7 +152,7 @@ with tab_rank:
         for d in ("BUY", "HOLD", "SELL")) +
         f'</span><span class="muted">&emsp;{HORIZONS[horizon].label}, {profile} profile</span></p>')
     f1, f2 = st.columns(2)
-    sectors = f1.multiselect("Sector", sorted(market.sectors.unique()), placeholder="All sectors")
+    sectors = f1.multiselect("Sector", sorted(ranking.Sector.unique()), placeholder="All sectors")
     chosen = f2.multiselect("Decision", ["BUY", "HOLD", "SELL"], default=["BUY", "HOLD", "SELL"])
     table = ranking[ranking["Decision"].isin(chosen)]
     if sectors:
@@ -177,8 +187,9 @@ with tab_compare:
         ui.show(ui.style(fig, 430))
         for col, c in zip(st.columns(len(cards), gap="large"), cards):
             with col:
-                ui.quote(c.ticker, c.sector, c.decision.value, c.total, c.rank,
-                         c.universe_size, small=True)
+                row = valuation.loc[c.ticker].to_dict() if c.ticker in valuation.index else None
+                ui.compact_quote(c.ticker, c.sector, c.decision.value, c.total, c.rank,
+                                 c.universe_size, describe(c, row))
                 ui.flags(c.flags)
 
 # ---------------------------------------------------------------- backtest
@@ -211,12 +222,12 @@ with tab_bt:
 
     real = st.toggle("Remove inflation (show real values)")
     lines = {"Following the BUY list": strategy, "BIST100 index": bt.index_month,
-             "All 100 stocks, equal weights": ew}
+             "All BIST100 stocks, equal weights": ew}
     if real:
         lines = {name: real_returns(monthly, cpi) for name, monthly in lines.items()}
     styles = {"Following the BUY list": dict(color=ui.AMBER, width=2.4),
               "BIST100 index": dict(color=ui.MUTED, width=1.6),
-              "All 100 stocks, equal weights": dict(color="#7fb4d9", width=1.6, dash="dot")}
+              "All BIST100 stocks, equal weights": dict(color="#7fb4d9", width=1.6, dash="dot")}
     fig = go.Figure()
     for name, monthly in lines.items():
         fig.add_scatter(x=monthly.index, y=(1 + monthly).cumprod(), name=name, line=styles[name])
@@ -257,10 +268,14 @@ with tab_bt:
             "BUY without flags": "No flag"})
         st.dataframe(pd.DataFrame({
             "Decisions": effect["count"].astype(int),
-            "Avg vs BIST100": 100 * effect["avg excess"],
+            "Average": 100 * effect["avg excess"],
             "Worst 10 %": 100 * effect["worst 10%"],
         }), width="stretch", column_config={
-            "Avg vs BIST100": st.column_config.NumberColumn(format="%+.1f%%"),
+            "Average": st.column_config.NumberColumn(format="%+.1f%%", help="Average result vs BIST100"),
             "Worst 10 %": st.column_config.NumberColumn(format="%+.1f%%")})
-    st.caption("Limitation: the stock list is today's BIST100, so companies that left the index "
-               "are missing (survivorship bias). That is why the equal-weight line is shown too.")
+    gone = (f" Missing: {', '.join(market.unavailable)} (delisted, prices no longer available)."
+            if market.unavailable else "")
+    st.caption("On every past date only the stocks that were in BIST100 on that date are scored "
+               "and compared, rebuilt from Borsa Istanbul's quarterly index changes. Using "
+               "today's list instead would leave out the companies that fell out of the index "
+               "(survivorship bias)." + gone)

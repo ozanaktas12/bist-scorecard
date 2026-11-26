@@ -24,6 +24,12 @@ class MarketData:
     volume: pd.DataFrame
     index_close: pd.Series
     sectors: pd.Series          # ticker -> sector name
+    members: pd.DataFrame | None = None   # dates x tickers: in BIST100 that day? (None = always)
+    unavailable: tuple[str, ...] = ()     # past members without price data (delisted)
+
+    def __post_init__(self) -> None:
+        if self.members is None:
+            self.members = pd.DataFrame(True, index=self.close.index, columns=self.close.columns)
 
     @property
     def tickers(self) -> list[str]:
@@ -40,7 +46,13 @@ class MarketData:
             volume=self.volume.loc[:date],
             index_close=self.index_close.loc[:date],
             sectors=self.sectors,
+            members=self.members.loc[:date],
+            unavailable=self.unavailable,
         )
+
+    def members_on(self, date: pd.Timestamp) -> list[str]:
+        row = self.members.loc[date]
+        return list(row.index[row])
 
 
 class DataProvider(ABC):
@@ -66,7 +78,16 @@ class YFinanceProvider(DataProvider):
                           group_by="column", threads=True)
         close = raw["Close"].rename(columns=lambda s: s.removesuffix(self.SUFFIX))
         volume = raw["Volume"].rename(columns=lambda s: s.removesuffix(self.SUFFIX))
-        return close[tickers], volume[tickers]
+        # Bulk downloads sometimes skip a few symbols silently: retry those one by one.
+        for ticker in [t for t in tickers if t not in close or close[t].isna().all()]:
+            for _ in range(3):
+                single = yf.download(ticker + self.SUFFIX, start=start, auto_adjust=True,
+                                     progress=False)
+                if len(single):
+                    close[ticker] = single["Close"].squeeze()
+                    volume[ticker] = single["Volume"].squeeze()
+                    break
+        return close.reindex(columns=tickers), volume.reindex(columns=tickers)
 
     def fetch_index(self, ticker, start):
         import yfinance as yf
@@ -84,7 +105,7 @@ class CachedProvider(DataProvider):
         self.cache_dir.mkdir(parents=True, exist_ok=True)
 
     def _path(self, name: str) -> Path:
-        return self.cache_dir / f"{name}.csv"
+        return self.cache_dir / f"{name}.csv.gz"   # compressed: ~170 stocks x 8 years
 
     def fetch_prices(self, tickers, start):
         close_path, volume_path = self._path("close"), self._path("volume")

@@ -71,7 +71,7 @@ class FlagEngine:
             "falling_knife": below_200 & sma200_falling & (ret63 < -0.15),
             "overbought": rsi > 80,
             "speculative": (near_limit_up_days >= 2) & (ind.RelativeVolume(20, 60)(c, volume=v) > 1.5),
-            "illiquid": traded_value.rank(axis=1, pct=True) <= 0.05,
+            "illiquid": traded_value.where(market.members).rank(axis=1, pct=True) <= 0.05,
             "overbought_mild": (rsi > 70) & (rsi <= 80),
             "overextended": c / sma200 - 1 > 0.50,
             "high_volatility": ind.Volatility(63)(c).gt(2 * index_vol, axis=0),

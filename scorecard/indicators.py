@@ -229,18 +229,20 @@ class AmihudIlliquidity(Indicator):
     """Price impact of trading (Amihud, 2002): average |daily return| per TL traded.
 
     Inflation inflates TL volumes every year, so the raw value is divided by
-    the median of all stocks on the same day: 1.0 = typical BIST100 liquidity,
-    4.0 = trading moves the price four times as much as for a typical stock.
+    the median of the index members on the same day: 1.0 = typical BIST100
+    liquidity, 4.0 = trading moves the price four times as much as for a
+    typical stock.
     """
 
     def __init__(self, window: int):
         self.window = window
 
-    def compute(self, close, *, volume: Panel, **_):
+    def compute(self, close, *, volume: Panel, members: Panel | None = None, **_):
         traded_value = (close * volume).replace(0, np.nan)
         impact = daily_returns(close).abs() / traded_value
         average = impact.rolling(self.window, min_periods=self.window // 2).mean()
-        return average.div(average.median(axis=1), axis=0)
+        typical = (average if members is None else average.where(members)).median(axis=1)
+        return average.div(typical, axis=0)
 
 
 @register
@@ -273,26 +275,26 @@ class Alpha(Indicator):
 
 @register
 class SectorRelativeReturn(Indicator):
-    """Return minus the median return of the *other* stocks in the same sector.
+    """Return minus the median return of the *other* index members in the same sector.
 
-    Sectors with fewer than `min_size` members are compared with the index instead.
+    On days when a sector has fewer than `min_size` members (the stock itself
+    included), the stock is compared with the index instead.
     """
 
     def __init__(self, window: int, skip: int = 0, min_size: int = 3):
         self.window, self.skip, self.min_size = window, skip, min_size
 
-    def compute(self, close, *, sectors: pd.Series, index_close: pd.Series, **_):
+    def compute(self, close, *, sectors: pd.Series, index_close: pd.Series,
+                members: Panel | None = None, **_):
         ret = PeriodReturn(self.window, self.skip)(close)
         index_ret = PeriodReturn(self.window, self.skip)(index_close.to_frame())[index_close.name]
+        peer_ret = ret if members is None else ret.where(members)
         result = pd.DataFrame(np.nan, index=close.index, columns=close.columns)
-        for sector, members in sectors.groupby(sectors).groups.items():
-            members = [m for m in members if m in close.columns]
-            for ticker in members:
-                peers = [m for m in members if m != ticker]
-                if len(members) >= self.min_size:
-                    benchmark = ret[peers].median(axis=1)
-                else:
-                    benchmark = index_ret
-                # Before the peers were listed there is no sector median: use the index.
+        for sector, names in sectors.groupby(sectors).groups.items():
+            names = [t for t in names if t in close.columns]
+            for ticker in names:
+                peers = peer_ret[[t for t in names if t != ticker]]
+                enough = peers.notna().sum(axis=1) >= self.min_size - 1
+                benchmark = peers.median(axis=1).where(enough, index_ret)
                 result[ticker] = ret[ticker] - benchmark.fillna(index_ret)
         return result

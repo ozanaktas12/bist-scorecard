@@ -1,0 +1,584 @@
+ticker,sector
+A1CAP,Aracı Kurum
+A1YEN,Enerji Üretim ve Dağıtım
+AAGYO,Gayrimenkul
+ACSEL,Kimya ve Plastik
+ADEL,İmalat
+ADESE,Gayrimenkul
+ADGYO,Gayrimenkul
+AEFES,Gıda ve İçecek
+AFYON,"Taş, Toprak, Çimento"
+AGESA,Emeklilik
+AGHOL,Holding
+AGROT,Gıda ve İçecek
+AGYO,Gayrimenkul
+AHGAZ,Enerji Üretim ve Dağıtım
+AHSGY,Gayrimenkul
+AKBNK,Bankacılık
+AKCNS,"Taş, Toprak, Çimento"
+AKENR,Enerji Üretim ve Dağıtım
+AKFGY,Gayrimenkul
+AKFIS,İnşaat
+AKFYE,Enerji Üretim ve Dağıtım
+AKGRT,Sigorta
+AKHAN,Gıda ve İçecek
+AKMGY,Gayrimenkul
+AKSA,Kimya ve Plastik
+AKSEN,Enerji Üretim ve Dağıtım
+AKSGY,Gayrimenkul
+AKSUE,Enerji Üretim ve Dağıtım
+AKYHO,Destek ve Hizmet
+ALARK,Holding
+ALBRK,Bankacılık
+ALBTN,"Taş, Toprak, Çimento"
+ALCAR,Dayanıklı Tüketim Ürünleri
+ALCTL,Haberleşme
+ALFAS,Enerji Teknolojileri
+ALGYO,Gayrimenkul
+ALKA,Kağıt ve Kağıt Ürünleri
+ALKIM,Kimya ve Plastik
+ALKLC,Gıda ve İçecek
+ALTNY,Savunma
+ANELE,İnşaat
+ANGEN,İlaç ve Sağlık
+ANHYT,Emeklilik
+ANSGR,Sigorta
+ARASE,Enerji Üretim ve Dağıtım
+ARCLK,Dayanıklı Tüketim Ürünleri
+ARDYZ,Bilişim ve Yazılım
+ARENA,Teknolojik Ürün Ticareti
+ARFYE,Enerji Üretim ve Dağıtım
+ARMGD,Gıda ve İçecek
+ARSAN,Holding
+ARTMS,"Tekstil, Giyim ve Deri"
+ARZUM,Dayanıklı Tüketim Ürünleri
+ASELS,Savunma
+ASGYO,Gayrimenkul
+ASTOR,Enerji Teknolojileri
+ASUZU,Otomotiv
+ATAGY,Gayrimenkul
+ATAKP,Gıda ve İçecek
+ATATP,Bilişim ve Yazılım
+ATATR,Turizm
+AVGYO,Gayrimenkul
+AVHOL,Holding
+AVOD,Gıda ve İçecek
+AVPGY,Gayrimenkul
+AVTUR,Toptan ve Perakende Ticaret
+AYCES,Turizm
+AYDEM,Enerji Üretim ve Dağıtım
+AYEN,Enerji Üretim ve Dağıtım
+AYGAZ,Kimya ve Plastik
+AZTEK,Teknolojik Ürün Ticareti
+BAGFS,Kimya ve Plastik
+BAHKM,Kimya ve Plastik
+BAKAB,Ambalaj
+BALSU,Gıda ve İçecek
+BANVT,Gıda ve İçecek
+BASGZ,Enerji Üretim ve Dağıtım
+BAYRK,"Tekstil, Giyim ve Deri"
+BEGYO,Gayrimenkul
+BERA,Holding
+BESLR,Gıda ve İçecek
+BESTE,Enerji Üretim ve Dağıtım
+BETAE,Enerji Teknolojileri
+BEYAZ,Destek ve Hizmet
+BFREN,Otomotiv Yan Sanayi
+BIENY,"Cam, Seramik, Porselen"
+BIGCH,Gıda ve İçecek
+BIGEN,Enerji Üretim ve Dağıtım
+BIGTK,Destek ve Hizmet
+BIMAS,Gıda Perakendeciliği
+BINBN,Ulaştırma
+BINHO,Holding
+BIOEN,Enerji Üretim ve Dağıtım
+BIZIM,Gıda Perakendeciliği
+BJKAS,Spor
+BKRGY,Gayrimenkul
+BLCYT,Holding
+BLUME,Turizm
+BMSCH,Ana Metal
+BMSTL,Ana Metal
+BNTAS,Ambalaj
+BOBET,"Taş, Toprak, Çimento"
+BORLS,Servis Taşımacılığı ve Araç Kiralama
+BORSK,Gıda ve İçecek
+BOSSA,"Tekstil, Giyim ve Deri"
+BRISA,Otomotiv Yan Sanayi
+BRKSN,İnşaat
+BRKVY,Varlık Yönetimi
+BRLSM,Enerji Teknolojileri
+BRSAN,Ana Metal
+BRYAT,Holding
+BSOKE,"Taş, Toprak, Çimento"
+BTCIM,"Taş, Toprak, Çimento"
+BUCIM,"Taş, Toprak, Çimento"
+BULGS,Girişim Sermayesi Yat. Ort.
+BURCE,Ana Metal
+BURVA,Ana Metal
+BVSAN,İmalat
+BYDNR,Gıda ve İçecek
+CANTE,Enerji Üretim ve Dağıtım
+CATES,Enerji Üretim ve Dağıtım
+CCOLA,Gıda ve İçecek
+CELHA,Ana Metal
+CEMAS,Ana Metal
+CEMTS,Ana Metal
+CEMZY,"Tarım, Hayvancılık, Balıkçılık"
+CEOEM,Destek ve Hizmet
+CGCAM,"Cam, Seramik, Porselen"
+CIMSA,"Taş, Toprak, Çimento"
+CITAS,Gıda ve İçecek
+CLEBI,Ulaştırma
+CMBTN,"Taş, Toprak, Çimento"
+CONSE,Enerji Üretim ve Dağıtım
+COSMO,Holding
+CRDFA,Faktoring
+CRFSA,Gıda Perakendeciliği
+CUSAN,Ana Metal
+CVKMD,Madencilik ve Taş Ocakçılığı
+CWENE,Enerji Teknolojileri
+DAGI,"Tekstil, Giyim ve Deri"
+DAPGM,Gayrimenkul
+DARDL,Gıda ve İçecek
+DCTTR,"Tarım, Hayvancılık, Balıkçılık"
+DENGE,Holding
+DERHL,"Tekstil, Giyim ve Deri"
+DERIM,"Tekstil, Giyim ve Deri"
+DESA,"Tekstil, Giyim ve Deri"
+DESPC,Teknolojik Ürün Ticareti
+DEVA,İlaç ve Sağlık
+DGATE,Teknolojik Ürün Ticareti
+DGGYO,Gayrimenkul
+DGNMO,Mobilya ve Dekorasyon
+DITAS,Otomotiv Yan Sanayi
+DMRGD,Gıda ve İçecek
+DMSAS,Ana Metal
+DNISI,Kimya ve Plastik
+DOAS,Otomotiv
+DOCO,Destek ve Hizmet
+DOFER,İmalat
+DOFRB,İmalat
+DOGUB,İmalat
+DOHOL,Holding
+DOKTA,Otomotiv Yan Sanayi
+DSTKF,Faktoring
+DUNYH,Gıda ve İçecek
+DURDO,Ambalaj
+DURKN,Gıda ve İçecek
+DYOBY,Kimya ve Plastik
+DZGYO,Gayrimenkul
+EBEBK,Toptan ve Perakende Ticaret
+ECILC,İlaç ve Sağlık
+ECOGR,Enerji Üretim ve Dağıtım
+ECZYT,Holding
+EDATA,Bilişim ve Yazılım
+EDIP,Gayrimenkul
+EFOR,Gıda ve İçecek
+EGEEN,Otomotiv Yan Sanayi
+EGEGY,Gayrimenkul
+EGEPO,İlaç ve Sağlık
+EGGUB,Kimya ve Plastik
+EGPRO,Kimya ve Plastik
+EGSER,"Cam, Seramik, Porselen"
+EKDMR,Ana Metal
+EKGYO,Gayrimenkul
+EKIM,Servis Taşımacılığı ve Araç Kiralama
+EKOS,Enerji Teknolojileri
+EKSUN,Gıda ve İçecek
+ELITE,Gıda ve İçecek
+EMKEL,İmalat
+EMPAE,Toptan ve Perakende Ticaret
+ENDAE,Enerji Üretim ve Dağıtım
+ENERY,Enerji Üretim ve Dağıtım
+ENJSA,Enerji Üretim ve Dağıtım
+ENKAI,İnşaat
+ENSRI,"Tekstil, Giyim ve Deri"
+ENTRA,Enerji Üretim ve Dağıtım
+EPLAS,Kimya ve Plastik
+ERBOS,Ana Metal
+ERCB,Ana Metal
+EREGL,Ana Metal
+ERSU,Gıda ve İçecek
+ESCAR,Servis Taşımacılığı ve Araç Kiralama
+ESCOM,Bilişim ve Yazılım
+ESEN,Enerji Üretim ve Dağıtım
+ETILR,Toptan ve Perakende Ticaret
+EUPWR,Enerji Teknolojileri
+EUREN,Enerji Üretim ve Dağıtım
+EYGYO,Gayrimenkul
+FADE,Gıda ve İçecek
+FENER,Spor
+FLAP,Destek ve Hizmet
+FMIZP,Otomotiv Yan Sanayi
+FONET,Bilişim ve Yazılım
+FORMT,Metal Eşya ve Makine
+FORTE,Bilişim ve Yazılım
+FRIGO,Gıda ve İçecek
+FRMPL,Kimya ve Plastik
+FROTO,Otomotiv
+FZLGY,Gayrimenkul
+GARAN,Bankacılık
+GARFA,Faktoring
+GEDIK,Aracı Kurum
+GEDZA,Ambalaj
+GENIL,İlaç ve Sağlık
+GENKM,Kimya ve Plastik
+GENTS,Mobilya ve Dekorasyon
+GEREL,Metal Eşya ve Makine
+GESAN,Enerji Teknolojileri
+GIPTA,İmalat
+GLBMD,Aracı Kurum
+GLCVY,Varlık Yönetimi
+GLRMK,İnşaat
+GLRYH,Holding
+GLYHO,Holding
+GMTAS,Toptan ve Perakende Ticaret
+GOKNR,Gıda ve İçecek
+GOLDA,Gıda ve İçecek
+GOLTS,"Taş, Toprak, Çimento"
+GOODY,Otomotiv Yan Sanayi
+GOZDE,Girişim Sermayesi Yat. Ort.
+GRSEL,Servis Taşımacılığı ve Araç Kiralama
+GRTHO,Gıda ve İçecek
+GSDDE,Ulaştırma
+GSDHO,Ulaştırma
+GSRAY,Spor
+GUBRF,Kimya ve Plastik
+GWIND,Enerji Üretim ve Dağıtım
+GZNMI,Turizm
+HALKB,Bankacılık
+HATEK,"Tekstil, Giyim ve Deri"
+HATSN,İmalat
+HDFGS,Girişim Sermayesi Yat. Ort.
+HEDEF,Holding
+HEKTS,Kimya ve Plastik
+HKTM,Metal Eşya ve Makine
+HLGYO,Gayrimenkul
+HOROZ,Ulaştırma
+HRKET,Destek ve Hizmet
+HTTBT,Bilişim ve Yazılım
+HUBVC,Girişim Sermayesi Yat. Ort.
+HUNER,Enerji Üretim ve Dağıtım
+HURGZ,Kağıt ve Kağıt Ürünleri
+ICBCT,Bankacılık
+ICUGS,Girişim Sermayesi Yat. Ort.
+IDGYO,Gayrimenkul
+IEYHO,Holding
+IHAAS,Haberleşme
+IHEVA,Dayanıklı Tüketim Ürünleri
+IHGZT,Kağıt ve Kağıt Ürünleri
+IHLAS,Holding
+IHLGM,Gayrimenkul
+IHYAY,Holding
+IMASM,Metal Eşya ve Makine
+INDES,Teknolojik Ürün Ticareti
+INFO,Aracı Kurum
+INGRM,Teknolojik Ürün Ticareti
+INTEM,Toptan ve Perakende Ticaret
+INTET,Bilişim ve Yazılım
+INVEO,Holding
+INVES,Holding
+ISATR,Bankacılık
+ISBTR,Bankacılık
+ISCTR,Bankacılık
+ISDMR,Ana Metal
+ISFIN,Finansal Kiralama
+ISGSY,Girişim Sermayesi Yat. Ort.
+ISGYO,Gayrimenkul
+ISKPL,Kimya ve Plastik
+ISMEN,Aracı Kurum
+ISSEN,Kimya ve Plastik
+ISVEA,"Cam, Seramik, Porselen"
+IZENR,Enerji Üretim ve Dağıtım
+IZFAS,Kimya ve Plastik
+IZINV,Holding
+IZMDC,Ana Metal
+JANTS,Otomotiv Yan Sanayi
+KAPLM,Ambalaj
+KARCL,Ana Metal
+KAREL,Haberleşme
+KARSN,Otomotiv
+KARTN,Ambalaj
+KATMR,Metal Eşya ve Makine
+KAYSE,Gıda ve İçecek
+KBORU,Ana Metal
+KCAER,Ana Metal
+KCHOL,Holding
+KFEIN,Bilişim ve Yazılım
+KGYO,Gayrimenkul
+KIMMR,Gıda Perakendeciliği
+KLGYO,Gayrimenkul
+KLKIM,Kimya ve Plastik
+KLMSN,Dayanıklı Tüketim Ürünleri
+KLRHO,Holding
+KLSER,"Cam, Seramik, Porselen"
+KLSYN,Mobilya ve Dekorasyon
+KLYPV,Enerji Teknolojileri
+KMPUR,Kimya ve Plastik
+KNFRT,Gıda ve İçecek
+KOCMT,Ana Metal
+KONKA,Kağıt ve Kağıt Ürünleri
+KONYA,"Taş, Toprak, Çimento"
+KOPOL,Kimya ve Plastik
+KORDS,Kimya ve Plastik
+KOTON,"Giyim, Tekstil ve Deri Ürünleri Perakendeciliği"
+KPEKS,Kimya ve Plastik
+KRDMA,Ana Metal
+KRDMB,Ana Metal
+KRDMD,Ana Metal
+KRGYO,Gayrimenkul
+KRONT,Haberleşme
+KRPLS,Ambalaj
+KRSTL,Gıda ve İçecek
+KRTEK,"Tekstil, Giyim ve Deri"
+KRVGD,Gıda ve İçecek
+KTLEV,Tasarruf Finansman
+KTSKR,Gıda ve İçecek
+KUTPO,"Cam, Seramik, Porselen"
+KUVVA,Gıda ve İçecek
+KUYAS,Gayrimenkul
+KZBGY,Gayrimenkul
+KZGYO,Gayrimenkul
+LIDER,Servis Taşımacılığı ve Araç Kiralama
+LIDFA,Faktoring
+LILAK,Kağıt ve Kağıt Ürünleri
+LINK,Bilişim ve Yazılım
+LKMNH,İlaç ve Sağlık
+LMKDC,"Taş, Toprak, Çimento"
+LOGO,Bilişim ve Yazılım
+LRSHO,Holding
+LUKSK,"Tekstil, Giyim ve Deri"
+LXGYO,Gayrimenkul
+LYDHO,Toptan ve Perakende Ticaret
+LYDYE,Enerji Üretim ve Dağıtım
+MAALT,Turizm
+MACKO,Destek ve Hizmet
+MAGEN,Enerji Üretim ve Dağıtım
+MAKIM,Metal Eşya ve Makine
+MAKTK,Metal Eşya ve Makine
+MANAS,Enerji Üretim ve Dağıtım
+MARBL,"Taş, Toprak, Çimento"
+MARMR,Holding
+MARTI,Turizm
+MASFN,Enerji Teknolojileri
+MAVI,"Tekstil, Giyim ve Deri"
+MCARD,Destek ve Hizmet
+MEDTR,İlaç ve Sağlık
+MEGMT,Ana Metal
+MEKAG,İmalat
+MEPET,Kimya ve Plastik
+MERCN,Kimya ve Plastik
+MERIT,Turizm
+MERKO,Gıda ve İçecek
+METEN,Enerji Üretim ve Dağıtım
+METRO,Holding
+MEYSU,Gıda ve İçecek
+MGROS,Gıda Perakendeciliği
+MHRGY,Gayrimenkul
+MIATK,Bilişim ve Yazılım
+MNDRS,"Tekstil, Giyim ve Deri"
+MNDTR,Ambalaj
+MOBTL,Teknolojik Ürün Ticareti
+MOGAN,Enerji Üretim ve Dağıtım
+MOPAS,Gıda Perakendeciliği
+MPARK,İlaç ve Sağlık
+MRGYO,Gayrimenkul
+MRSHL,Kimya ve Plastik
+MSGYO,Gayrimenkul
+MTRKS,Bilişim ve Yazılım
+MZHLD,Holding
+NATEN,Enerji Üretim ve Dağıtım
+NETAS,Haberleşme
+NETCD,Bilişim ve Yazılım
+NETGL,Kimya ve Plastik
+NIBAS,"Taş, Toprak, Çimento"
+NTGAZ,Enerji Üretim ve Dağıtım
+NTHOL,Holding
+NUGYO,Gayrimenkul
+NUHCM,"Taş, Toprak, Çimento"
+OBAMS,Gıda ve İçecek
+OBASE,Bilişim ve Yazılım
+ODAS,Enerji Üretim ve Dağıtım
+ODINE,Bilişim ve Yazılım
+OFSYM,Gıda ve İçecek
+ONCSM,İlaç ve Sağlık
+ONRYT,Bilişim ve Yazılım
+ORCAY,Gıda ve İçecek
+ORGE,Enerji Teknolojileri
+ORZAX,İlaç ve Sağlık
+OSMEN,Aracı Kurum
+OSTIM,Holding
+OTKAR,Otomotiv
+OTTO,Holding
+OYAKC,"Taş, Toprak, Çimento"
+OYLUM,Gıda ve İçecek
+OYYAT,Aracı Kurum
+OZATD,İmalat
+OZGYO,Gayrimenkul
+OZKGY,Gayrimenkul
+OZRDN,Kimya ve Plastik
+OZSUB,"Tarım, Hayvancılık, Balıkçılık"
+OZYSR,Ana Metal
+PAGYO,Gayrimenkul
+PAHOL,Holding
+PAMEL,Enerji Üretim ve Dağıtım
+PAPIL,Bilişim ve Yazılım
+PARSN,Otomotiv Yan Sanayi
+PASEU,Ulaştırma
+PATEK,Bilişim ve Yazılım
+PCILT,Destek ve Hizmet
+PENGD,Gıda ve İçecek
+PENTA,Teknolojik Ürün Ticareti
+PETKM,Kimya ve Plastik
+PETUN,Gıda ve İçecek
+PGSUS,Ulaştırma
+PINSU,Gıda ve İçecek
+PKART,Bilişim ve Yazılım
+PKENT,Turizm
+PLTUR,Servis Taşımacılığı ve Araç Kiralama
+PNLSN,İnşaat
+PNSUT,Gıda ve İçecek
+POLHO,Holding
+POLTK,Ana Metal
+PRDGS,Girişim Sermayesi Yat. Ort.
+PRKAB,Metal Eşya ve Makine
+PRKME,Enerji Üretim ve Dağıtım
+PRZMA,Kağıt ve Kağıt Ürünleri
+PSDTC,Toptan ve Perakende Ticaret
+PSGYO,Gayrimenkul
+QUAGR,"Cam, Seramik, Porselen"
+QUICK,Sigorta
+RAYSG,Sigorta
+REEDR,Bilişim ve Yazılım
+RGYAS,Gayrimenkul
+RNPOL,Kimya ve Plastik
+RODRG,"Tekstil, Giyim ve Deri"
+RTALB,İlaç ve Sağlık
+RUBNS,"Tekstil, Giyim ve Deri"
+RUZYE,Madencilik ve Taş Ocakçılığı
+RYGYO,Gayrimenkul
+RYSAS,Ulaştırma
+SAFKR,Metal Eşya ve Makine
+SAHOL,Holding
+SAMAT,Kağıt ve Kağıt Ürünleri
+SANEL,İnşaat
+SANFM,Kimya ve Plastik
+SANKO,"Tekstil, Giyim ve Deri"
+SARAE,Enerji Teknolojileri
+SARKY,Ana Metal
+SASA,Kimya ve Plastik
+SAYAS,Enerji Teknolojileri
+SDTTR,Savunma
+SEGMN,Gıda ve İçecek
+SEGYO,Gayrimenkul
+SEKFK,Finansal Kiralama
+SEKUR,Ambalaj
+SELEC,İlaç ve Sağlık
+SELVA,Gıda ve İçecek
+SERNT,"Cam, Seramik, Porselen"
+SEYKM,Kimya ve Plastik
+SILVR,Dayanıklı Tüketim Ürünleri
+SISE,"Cam, Seramik, Porselen"
+SKBNK,Bankacılık
+SKTAS,"Tekstil, Giyim ve Deri"
+SKYLP,Bilişim ve Yazılım
+SKYMD,Aracı Kurum
+SMART,Bilişim ve Yazılım
+SMRTG,Enerji Teknolojileri
+SMRVA,Varlık Yönetimi
+SNGYO,Gayrimenkul
+SNICA,Metal Eşya ve Makine
+SOHOE,Enerji Üretim ve Dağıtım
+SOKE,Gıda ve İçecek
+SOKM,Gıda Perakendeciliği
+SONME,"Tekstil, Giyim ve Deri"
+SRVGY,Gayrimenkul
+SSAAT,Toptan ve Perakende Ticaret
+SUNTK,"Tekstil, Giyim ve Deri"
+SURGY,Gayrimenkul
+SUWEN,"Tekstil, Giyim ve Deri"
+SVGYO,Gayrimenkul
+TABGD,Gıda ve İçecek
+TARKM,Kimya ve Plastik
+TATEN,Enerji Üretim ve Dağıtım
+TATGD,Gıda ve İçecek
+TAVHL,Ulaştırma
+TBORG,Gıda ve İçecek
+TCELL,Haberleşme
+TCKRC,İmalat
+TDGYO,Gayrimenkul
+TEHOL,Holding
+TEKTU,Turizm
+TEZOL,Kağıt ve Kağıt Ürünleri
+TGSAS,Toptan ve Perakende Ticaret
+THYAO,Ulaştırma
+TKFEN,Holding
+TKNKA,Kimya ve Plastik
+TKNSA,Teknolojik Ürün Ticareti
+TLMAN,Ulaştırma
+TMPOL,Kimya ve Plastik
+TMSN,Otomotiv
+TNZTP,İlaç ve Sağlık
+TOASO,Otomotiv
+TRALT,Madencilik ve Taş Ocakçılığı
+TRCAS,Kimya ve Plastik
+TRENJ,Madencilik ve Taş Ocakçılığı
+TRGYO,Gayrimenkul
+TRMET,Madencilik ve Taş Ocakçılığı
+TSGYO,Gayrimenkul
+TSKB,Bankacılık
+TSPOR,Spor
+TTKOM,Haberleşme
+TTRAK,Otomotiv
+TUCLK,Ana Metal
+TUKAS,Gıda ve İçecek
+TUPRS,Kimya ve Plastik
+TUREX,Servis Taşımacılığı ve Araç Kiralama
+TURGG,İnşaat
+TURSG,Sigorta
+UCAYM,İnşaat
+UFUK,Holding
+ULAS,Turizm
+ULKER,Gıda ve İçecek
+ULUFA,Faktoring
+ULUSE,Metal Eşya ve Makine
+ULUUN,Gıda ve İçecek
+UNLU,Holding
+USHOL,Holding
+VAKBN,Bankacılık
+VAKFA,Faktoring
+VAKFN,Finansal Kiralama
+VAKKO,"Tekstil, Giyim ve Deri"
+VANGD,Gıda ve İçecek
+VBTYZ,Bilişim ve Yazılım
+VERTU,Girişim Sermayesi Yat. Ort.
+VERUS,Holding
+VESBE,Dayanıklı Tüketim Ürünleri
+VESTL,Dayanıklı Tüketim Ürünleri
+VEYAS,Enerji Üretim ve Dağıtım
+VKGYO,Gayrimenkul
+VKING,Kağıt ve Kağıt Ürünleri
+VRGYO,Gayrimenkul
+VSNMD,Madencilik ve Taş Ocakçılığı
+YAPRK,"Tarım, Hayvancılık, Balıkçılık"
+YATAS,Mobilya ve Dekorasyon
+YAYLA,Enerji Üretim ve Dağıtım
+YEOTK,Enerji Teknolojileri
+YESIL,Holding
+YGGYO,Gayrimenkul
+YIGIT,Otomotiv Yan Sanayi
+YKBNK,Bankacılık
+YKSLN,Ana Metal
+YUNSA,"Tekstil, Giyim ve Deri"
+YYLGD,Gıda ve İçecek
+ZEDUR,Enerji Üretim ve Dağıtım
+ZERGY,Gayrimenkul
+ZGYO,Gayrimenkul
+ZOREN,Enerji Üretim ve Dağıtım
+ZRGYO,Gayrimenkul
+KERVT,Gıda ve İçecek
+KONTR,Enerji Teknolojileri
+PEKGY,Gayrimenkul
+RALYH,Holding
+TRILC,İlaç ve Sağlık

@@ -1,0 +1,451 @@
+effective_date,action,ticker,company_name,source_url
+2021-01-01,add,BERA,BERA HOLDING,https://www.borsaistanbul.com/duyuru/14132/2021-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-01-01,add,EGGUB,EGE GUBRE,https://www.borsaistanbul.com/duyuru/14132/2021-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-01-01,add,IHLGM,IHLAS GAYRIMENKUL,https://www.borsaistanbul.com/duyuru/14132/2021-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-01-01,add,KARSN,KARSAN OTOMOTIV,https://www.borsaistanbul.com/duyuru/14132/2021-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-01-01,add,KONYA,KONYA CIMENTO,https://www.borsaistanbul.com/duyuru/14132/2021-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-01-01,add,VERUS,VERUSA HOLDING,https://www.borsaistanbul.com/duyuru/14132/2021-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-01-01,remove,ARDYZ,ARD BILISIM TEKNOLOJILERI,https://www.borsaistanbul.com/duyuru/14132/2021-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-01-01,remove,CLEBI,CELEBI,https://www.borsaistanbul.com/duyuru/14132/2021-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-01-01,remove,DOCO,DO-CO,https://www.borsaistanbul.com/duyuru/14132/2021-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-01-01,remove,KAREL,KAREL ELEKTRONIK,https://www.borsaistanbul.com/duyuru/14132/2021-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-01-01,remove,PETUN,PINAR ET VE UN,https://www.borsaistanbul.com/duyuru/14132/2021-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-01-01,remove,TMSN,TUMOSAN MOTOR VE TRAKTOR,https://www.borsaistanbul.com/duyuru/14132/2021-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-04-01,add,CEMAS,CEMAS DOKUM,https://www.borsaistanbul.com/duyuru/14147/2021-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-04-01,add,ESEN,ESENBOGA ELEKTRIK,https://www.borsaistanbul.com/duyuru/14147/2021-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-04-01,add,FENER,FENERBAHCE FUTBOL,https://www.borsaistanbul.com/duyuru/14147/2021-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-04-01,add,IHLAS,IHLAS HOLDING,https://www.borsaistanbul.com/duyuru/14147/2021-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-04-01,add,JANTS,JANTSA JANT SANAYI,https://www.borsaistanbul.com/duyuru/14147/2021-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-04-01,add,KRVGD,KERVAN GIDA,https://www.borsaistanbul.com/duyuru/14147/2021-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-04-01,add,NUHCM,NUH CIMENTO,https://www.borsaistanbul.com/duyuru/14147/2021-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-04-01,add,PARSN,PARSAN,https://www.borsaistanbul.com/duyuru/14147/2021-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-04-01,add,POLHO,POLISAN HOLDING,https://www.borsaistanbul.com/duyuru/14147/2021-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-04-01,add,TKNSA,TEKNOSA IC VE DIS TICARET,https://www.borsaistanbul.com/duyuru/14147/2021-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-04-01,add,TUKAS,TUKAS,https://www.borsaistanbul.com/duyuru/14147/2021-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-04-01,remove,AGHOL,ANADOLU GRUBU HOLDING,https://www.borsaistanbul.com/duyuru/14147/2021-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-04-01,remove,AKCNS,AKCANSA,https://www.borsaistanbul.com/duyuru/14147/2021-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-04-01,remove,AKGRT,AKSIGORTA,https://www.borsaistanbul.com/duyuru/14147/2021-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-04-01,remove,ALCTL,ALCATEL LUCENT TELETAS,https://www.borsaistanbul.com/duyuru/14147/2021-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-04-01,remove,AYGAZ,AYGAZ,https://www.borsaistanbul.com/duyuru/14147/2021-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-04-01,remove,BIZIM,BIZIM MAGAZALARI,https://www.borsaistanbul.com/duyuru/14147/2021-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-04-01,remove,ENKAI,ENKA INSAAT,https://www.borsaistanbul.com/duyuru/14147/2021-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-04-01,remove,ISDMR,ISKENDERUN DEMIR CELIK,https://www.borsaistanbul.com/duyuru/14147/2021-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-04-01,remove,LOGO,LOGO YAZILIM,https://www.borsaistanbul.com/duyuru/14147/2021-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-04-01,remove,OZKGY,OZAK GMYO,https://www.borsaistanbul.com/duyuru/14147/2021-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-04-01,remove,PNSUT,PINAR SUT,https://www.borsaistanbul.com/duyuru/14147/2021-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-07-01,add,AFYON,AFYON CIMENTO,https://www.borsaistanbul.com/duyuru/12664/2021-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-07-01,add,BRYAT,BORUNSAN YAT. PAZ.,https://www.borsaistanbul.com/duyuru/12664/2021-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-07-01,add,ENKAI,ENKA INSAAT,https://www.borsaistanbul.com/duyuru/12664/2021-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-07-01,add,ERBOS,ERBOSAN,https://www.borsaistanbul.com/duyuru/12664/2021-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-07-01,add,GLYHO,GLOBAL YAT. HOLDING,https://www.borsaistanbul.com/duyuru/12664/2021-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-07-01,add,GSRAY,GALATASARAY SPORTIF,https://www.borsaistanbul.com/duyuru/12664/2021-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-07-01,add,HDFGS,HEDEF GIRISIM,https://www.borsaistanbul.com/duyuru/12664/2021-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-07-01,add,LOGO,LOGO YAZILIM,https://www.borsaistanbul.com/duyuru/12664/2021-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-07-01,add,RTALB,RTA LABORATUVARLARI,https://www.borsaistanbul.com/duyuru/12664/2021-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-07-01,add,VESBE,VESTEL BEYAZ ESYA,https://www.borsaistanbul.com/duyuru/12664/2021-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-07-01,remove,AKSGY,AKIS GMYO,https://www.borsaistanbul.com/duyuru/12664/2021-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-07-01,remove,BUCIM,BURSA CIMENTO,https://www.borsaistanbul.com/duyuru/12664/2021-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-07-01,remove,GOODY,GOOD-YEAR,https://www.borsaistanbul.com/duyuru/12664/2021-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-07-01,remove,GSDHO,GSD HOLDING,https://www.borsaistanbul.com/duyuru/12664/2021-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-07-01,remove,HLGYO,HALK GMYO,https://www.borsaistanbul.com/duyuru/12664/2021-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-07-01,remove,MAVI,MAVI GIYIM,https://www.borsaistanbul.com/duyuru/12664/2021-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-07-01,remove,POLHO,POLISAN HOLDING,https://www.borsaistanbul.com/duyuru/12664/2021-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-07-01,remove,TATGD,TAT GIDA,https://www.borsaistanbul.com/duyuru/12664/2021-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-07-01,remove,TUKAS,TUKAS,https://www.borsaistanbul.com/duyuru/12664/2021-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-07-01,remove,YATAS,YATAS,https://www.borsaistanbul.com/duyuru/12664/2021-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-10-01,add,AGHOL,ANADOLU GRUBU HOLDING,https://www.borsaistanbul.com/duyuru/14213/2021-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-10-01,add,AKCNS,AKCANSA,https://www.borsaistanbul.com/duyuru/14213/2021-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-10-01,add,ARDYZ,ARD BILISIM TEKNOLOJILERI,https://www.borsaistanbul.com/duyuru/14213/2021-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-10-01,add,AYDEM,AYDEM ENERJI,https://www.borsaistanbul.com/duyuru/14213/2021-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-10-01,add,AYGAZ,AYGAZ,https://www.borsaistanbul.com/duyuru/14213/2021-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-10-01,add,BIOEN,BIOTREND CEVRE VE ENERJI,https://www.borsaistanbul.com/duyuru/14213/2021-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-10-01,add,CANTE,CAN2 TERMIK,https://www.borsaistanbul.com/duyuru/14213/2021-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-10-01,add,HLGYO,HALK GMYO,https://www.borsaistanbul.com/duyuru/14213/2021-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-10-01,add,ISDMR,ISKENDERUN DEMIR CELIK,https://www.borsaistanbul.com/duyuru/14213/2021-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-10-01,add,IZMDC,IZMIR DEMIR CELIK,https://www.borsaistanbul.com/duyuru/14213/2021-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-10-01,add,MAVI,MAVI GIYIM,https://www.borsaistanbul.com/duyuru/14213/2021-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-10-01,add,QUAGR,QUA GRANITE HAYAL YAPI,https://www.borsaistanbul.com/duyuru/14213/2021-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-10-01,add,SARKY,SARKUYSAN,https://www.borsaistanbul.com/duyuru/14213/2021-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-10-01,add,TMSN,TUMOSAN MOTOR VE TRAKTOR,https://www.borsaistanbul.com/duyuru/14213/2021-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-10-01,add,TRILC,TURK ILAC SERUM,https://www.borsaistanbul.com/duyuru/14213/2021-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-10-01,add,YATAS,YATAS,https://www.borsaistanbul.com/duyuru/14213/2021-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-10-01,add,ZRGYO,ZIRAAT GMYO,https://www.borsaistanbul.com/duyuru/14213/2021-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-10-01,remove,AFYON,AFYON CIMENTO,https://www.borsaistanbul.com/duyuru/14213/2021-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-10-01,remove,BRSAN,BORUSAN MANNESMANN,https://www.borsaistanbul.com/duyuru/14213/2021-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-10-01,remove,BRYAT,BORUNSAN YAT. PAZ.,https://www.borsaistanbul.com/duyuru/14213/2021-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-10-01,remove,CEMAS,CEMAS DOKUM,https://www.borsaistanbul.com/duyuru/14213/2021-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-10-01,remove,ECZYT,ECZACIBASI YATIRIM,https://www.borsaistanbul.com/duyuru/14213/2021-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-10-01,remove,EGGUB,EGE GUBRE,https://www.borsaistanbul.com/duyuru/14213/2021-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-10-01,remove,FENER,FENERBAHCE FUTBOL,https://www.borsaistanbul.com/duyuru/14213/2021-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-10-01,remove,GSRAY,GALATASARAY SPORTIF,https://www.borsaistanbul.com/duyuru/14213/2021-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-10-01,remove,HDFGS,HEDEF GIRISIM,https://www.borsaistanbul.com/duyuru/14213/2021-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-10-01,remove,IHLAS,IHLAS HOLDING,https://www.borsaistanbul.com/duyuru/14213/2021-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-10-01,remove,IHLGM,IHLAS GAYRIMENKUL,https://www.borsaistanbul.com/duyuru/14213/2021-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-10-01,remove,IPEKE,IPEK DOGAL ENERJI,https://www.borsaistanbul.com/duyuru/14213/2021-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-10-01,remove,JANTS,JANTSA JANT SANAYI,https://www.borsaistanbul.com/duyuru/14213/2021-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-10-01,remove,KONYA,KONYA CIMENTO,https://www.borsaistanbul.com/duyuru/14213/2021-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-10-01,remove,NTHOL,NET HOLDING,https://www.borsaistanbul.com/duyuru/14213/2021-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-10-01,remove,NUHCM,NUH CIMENTO,https://www.borsaistanbul.com/duyuru/14213/2021-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2021-10-01,remove,RTALB,RTA LABORATUVARLARI,https://www.borsaistanbul.com/duyuru/14213/2021-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-01-01,add,ADESE,ADESE GAYRIMENKUL,https://www.borsaistanbul.com/duyuru/12771/2022-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-01-01,add,BASGZ,BASKENT DOGALGAZ GMYO,https://www.borsaistanbul.com/duyuru/12771/2022-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-01-01,add,BRYAT,BORUNSAN YAT. PAZ.,https://www.borsaistanbul.com/duyuru/12771/2022-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-01-01,add,CEMAS,CEMAS DOKUM,https://www.borsaistanbul.com/duyuru/12771/2022-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-01-01,add,GENIL,GEN ILAC,https://www.borsaistanbul.com/duyuru/12771/2022-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-01-01,add,GESAN,GIRISIM ELEKTRIK SANAYI,https://www.borsaistanbul.com/duyuru/12771/2022-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-01-01,add,IPEKE,IPEK DOGAL ENERJI,https://www.borsaistanbul.com/duyuru/12771/2022-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-01-01,add,NTHOL,NET HOLDING,https://www.borsaistanbul.com/duyuru/12771/2022-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-01-01,add,RTALB,RTA LABORATUVARLARI,https://www.borsaistanbul.com/duyuru/12771/2022-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-01-01,remove,AKCNS,AKCANSA,https://www.borsaistanbul.com/duyuru/12771/2022-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-01-01,remove,ALBRK,ALBARAKA TURK,https://www.borsaistanbul.com/duyuru/12771/2022-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-01-01,remove,AYGAZ,AYGAZ,https://www.borsaistanbul.com/duyuru/12771/2022-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-01-01,remove,CEMTS,CEMTAS,https://www.borsaistanbul.com/duyuru/12771/2022-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-01-01,remove,HLGYO,HALK GMYO,https://www.borsaistanbul.com/duyuru/12771/2022-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-01-01,remove,MPARK,MLP SAGLIK,https://www.borsaistanbul.com/duyuru/12771/2022-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-01-01,remove,NETAS,NETAS TELEKOM.,https://www.borsaistanbul.com/duyuru/12771/2022-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-01-01,remove,TMSN,TUMOSAN MOTOR VE TRAKTOR,https://www.borsaistanbul.com/duyuru/12771/2022-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-01-01,remove,TRILC,TURK ILAC SERUM,https://www.borsaistanbul.com/duyuru/12771/2022-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-04-01,add,ARASE,DOGU ARAS ENERJI,https://www.borsaistanbul.com/duyuru/14347/2022-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-04-01,add,GSDHO,GSD HOLDING,https://www.borsaistanbul.com/duyuru/14347/2022-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-04-01,add,GWIND,GALATA WIND ENERJI,https://www.borsaistanbul.com/duyuru/14347/2022-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-04-01,add,JANTS,JANTSA JANT SANAYI,https://www.borsaistanbul.com/duyuru/14347/2022-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-04-01,add,KONTR,KONTROLMATIK TEKNOLOJI,https://www.borsaistanbul.com/duyuru/14347/2022-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-04-01,add,KUTPO,KUTAHYA PORSELEN,https://www.borsaistanbul.com/duyuru/14347/2022-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-04-01,add,KZBGY,KIZILBUK GYO,https://www.borsaistanbul.com/duyuru/14347/2022-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-04-01,add,NUGYO,NUROL GMYO,https://www.borsaistanbul.com/duyuru/14347/2022-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-04-01,add,SNGYO,SINPAS GMYO,https://www.borsaistanbul.com/duyuru/14347/2022-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-04-01,add,TRILC,TURK ILAC SERUM,https://www.borsaistanbul.com/duyuru/14347/2022-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-04-01,remove,ADESE,ADESE GAYRIMENKUL,https://www.borsaistanbul.com/duyuru/14347/2022-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-04-01,remove,CEMAS,CEMAS DOKUM,https://www.borsaistanbul.com/duyuru/14347/2022-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-04-01,remove,GESAN,GIRISIM ELEKTRIK SANAYI,https://www.borsaistanbul.com/duyuru/14347/2022-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-04-01,remove,IZMDC,IZMIR DEMIR CELIK,https://www.borsaistanbul.com/duyuru/14347/2022-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-04-01,remove,KERVT,KEREVITAS GIDA,https://www.borsaistanbul.com/duyuru/14347/2022-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-04-01,remove,KRVGD,KERVAN GIDA,https://www.borsaistanbul.com/duyuru/14347/2022-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-04-01,remove,RTALB,RTA LABORATUVARLARI,https://www.borsaistanbul.com/duyuru/14347/2022-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-04-01,remove,SARKY,SARKUYSAN,https://www.borsaistanbul.com/duyuru/14347/2022-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-04-01,remove,VERUS,VERUSA HOLDING,https://www.borsaistanbul.com/duyuru/14347/2022-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-04-01,remove,YATAS,YATAS,https://www.borsaistanbul.com/duyuru/14347/2022-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-07-01,add,AKFGY,AKFEN GMYO,https://www.borsaistanbul.com/duyuru/14401/2022-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-07-01,add,ALBRK,ALBARAKA TURK,https://www.borsaistanbul.com/duyuru/14401/2022-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-07-01,add,BAGFS,BAGFAS,https://www.borsaistanbul.com/duyuru/14401/2022-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-07-01,add,BUCIM,BURSA CIMENTO,https://www.borsaistanbul.com/duyuru/14401/2022-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-07-01,add,CEMTS,CEMTAS,https://www.borsaistanbul.com/duyuru/14401/2022-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-07-01,add,INVES,INVESTCO HOLDING,https://www.borsaistanbul.com/duyuru/14401/2022-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-07-01,add,PSGYO,PASIFIK GMYO,https://www.borsaistanbul.com/duyuru/14401/2022-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-07-01,add,YATAS,YATAS,https://www.borsaistanbul.com/duyuru/14401/2022-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-07-01,remove,ARASE,DOGU ARAS ENERJI,https://www.borsaistanbul.com/duyuru/14401/2022-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-07-01,remove,BIOEN,BIOTREND CEVRE VE ENERJI,https://www.borsaistanbul.com/duyuru/14401/2022-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-07-01,remove,BRISA,BRISA,https://www.borsaistanbul.com/duyuru/14401/2022-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-07-01,remove,CANTE,CAN2 TERMIK,https://www.borsaistanbul.com/duyuru/14401/2022-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-07-01,remove,ESEN,ESENBOGA ELEKTRIK,https://www.borsaistanbul.com/duyuru/14401/2022-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-07-01,remove,KARTN,KARTONSAN,https://www.borsaistanbul.com/duyuru/14401/2022-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-07-01,remove,KUTPO,KUTAHYA PORSELEN,https://www.borsaistanbul.com/duyuru/14401/2022-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-07-01,remove,KZBGY,KIZILBUK GYO,https://www.borsaistanbul.com/duyuru/14401/2022-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-10-01,add,GESAN,GIRISIM ELEKTRIK SANAYI,https://www.borsaistanbul.com/duyuru/12960/2022-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-10-01,add,KARTN,KARTONSAN,https://www.borsaistanbul.com/duyuru/12960/2022-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-10-01,add,PRKAB,TURK PRYSMIAN KABLO,https://www.borsaistanbul.com/duyuru/12960/2022-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-10-01,add,SMRTG,SMART GUNES ENERJISI TEK.,https://www.borsaistanbul.com/duyuru/12960/2022-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-10-01,add,TMSN,TUMOSAN MOTOR VE TRAKTOR,https://www.borsaistanbul.com/duyuru/12960/2022-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-10-01,add,TSPOR,TRABZONSPOR SPORTIF,https://www.borsaistanbul.com/duyuru/12960/2022-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-10-01,add,TUKAS,TUKAS,https://www.borsaistanbul.com/duyuru/12960/2022-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-10-01,add,YYLGD,YAYLA GIDA,https://www.borsaistanbul.com/duyuru/12960/2022-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-10-01,remove,ARDYZ,ARD BILISIM TEKNOLOJILERI,https://www.borsaistanbul.com/duyuru/12960/2022-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-10-01,remove,INDES,INDEKS BILGISAYAR,https://www.borsaistanbul.com/duyuru/12960/2022-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-10-01,remove,INVES,INVESTCO HOLDING,https://www.borsaistanbul.com/duyuru/12960/2022-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-10-01,remove,PARSN,PARSAN,https://www.borsaistanbul.com/duyuru/12960/2022-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-10-01,remove,TKNSA,TEKNOSA IC VE DIS TICARET,https://www.borsaistanbul.com/duyuru/12960/2022-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-10-01,remove,TRILC,TURK ILAC SERUM,https://www.borsaistanbul.com/duyuru/12960/2022-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-10-01,remove,ZOREN,ZORLU ENERJI,https://www.borsaistanbul.com/duyuru/12960/2022-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2022-10-01,remove,ZRGYO,ZIRAAT GMYO,https://www.borsaistanbul.com/duyuru/12960/2022-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2023-01-01,add,ASUZU,ANADOLU ISUZU,https://www.borsaistanbul.com/duyuru/14476/2023-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2023-01-01,add,BIOEN,BIOTREND CEVRE VE ENERJI,https://www.borsaistanbul.com/duyuru/14476/2023-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2023-01-01,add,EUREN,EUROPEN ENDUSTRI,https://www.borsaistanbul.com/duyuru/14476/2023-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2023-01-01,add,FENER,FENERBAHCE FUTBOL,https://www.borsaistanbul.com/duyuru/14476/2023-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2023-01-01,add,KCAER,KOCAER CELIK,https://www.borsaistanbul.com/duyuru/14476/2023-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2023-01-01,add,KERVT,KEREVITAS GIDA,https://www.borsaistanbul.com/duyuru/14476/2023-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2023-01-01,add,KLRHO,KILER HOLDING,https://www.borsaistanbul.com/duyuru/14476/2023-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2023-01-01,add,KMPUR,KIMTEKS POLIURETAN,https://www.borsaistanbul.com/duyuru/14476/2023-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2023-01-01,add,KZBGY,KIZILBUK GYO,https://www.borsaistanbul.com/duyuru/14476/2023-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2023-01-01,add,TKNSA,TEKNOSA IC VE DIS TICARET,https://www.borsaistanbul.com/duyuru/14476/2023-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2023-01-01,add,ZOREN,ZORLU ENERJI,https://www.borsaistanbul.com/duyuru/14476/2023-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2023-01-01,remove,DEVA,DEVA HOLDING,https://www.borsaistanbul.com/duyuru/14476/2023-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2023-01-01,remove,GENIL,GEN ILAC,https://www.borsaistanbul.com/duyuru/14476/2023-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2023-01-01,remove,GOZDE,GOZDE GIRISIM,https://www.borsaistanbul.com/duyuru/14476/2023-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2023-01-01,remove,ISMEN,IS Y. MEN. DEG.,https://www.borsaistanbul.com/duyuru/14476/2023-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2023-01-01,remove,KARTN,KARTONSAN,https://www.borsaistanbul.com/duyuru/14476/2023-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2023-01-01,remove,LOGO,LOGO YAZILIM,https://www.borsaistanbul.com/duyuru/14476/2023-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2023-01-01,remove,NUGYO,NUROL GMYO,https://www.borsaistanbul.com/duyuru/14476/2023-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2023-01-01,remove,PRKAB,TURK PRYSMIAN KABLO,https://www.borsaistanbul.com/duyuru/14476/2023-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2023-01-01,remove,QUAGR,QUA GRANITE HAYAL YAPI,https://www.borsaistanbul.com/duyuru/14476/2023-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2023-01-01,remove,TRGYO,TORUNLAR GMYO,https://www.borsaistanbul.com/duyuru/14476/2023-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2023-01-01,remove,YATAS,YATAS,https://www.borsaistanbul.com/duyuru/14476/2023-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylarda-degisiklik-yapilmistir
+2023-04-01,add,ALFAS,ALFA SOLAR ENERJI,https://www.borsaistanbul.com/duyuru/14516/2023-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2023-04-01,add,GENIL,GEN ILAC,https://www.borsaistanbul.com/duyuru/14516/2023-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2023-04-01,add,IZMDC,IZMIR DEMIR CELIK,https://www.borsaistanbul.com/duyuru/14516/2023-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2023-04-01,add,KONYA,KONYA CIMENTO,https://www.borsaistanbul.com/duyuru/14516/2023-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2023-04-01,add,ULUUN,ULUSOY UN SANAYI,https://www.borsaistanbul.com/duyuru/14516/2023-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2023-04-01,remove,ALGYO,ALARKO GMYO,https://www.borsaistanbul.com/duyuru/14516/2023-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2023-04-01,remove,ISFIN,IS FIN.KIR.,https://www.borsaistanbul.com/duyuru/14516/2023-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2023-04-01,remove,JANTS,JANTSA JANT SANAYI,https://www.borsaistanbul.com/duyuru/14516/2023-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2023-04-01,remove,NTHOL,NET HOLDING,https://www.borsaistanbul.com/duyuru/14516/2023-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2023-04-01,remove,TSPOR,TRABZONSPOR SPORTIF,https://www.borsaistanbul.com/duyuru/14516/2023-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2023-07-01,add,AHGAZ,AHLATCI DOGALGAZ,https://www.borsaistanbul.com/duyuru/14545/2023-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2023-07-01,add,AKCNS,AKCANSA,https://www.borsaistanbul.com/duyuru/14545/2023-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2023-07-01,add,ASTOR,ASTOR ENERJI,https://www.borsaistanbul.com/duyuru/14545/2023-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2023-07-01,add,BRSAN,BORUSAN MANNESMANN,https://www.borsaistanbul.com/duyuru/14545/2023-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2023-07-01,add,CANTE,CAN2 TERMIK,https://www.borsaistanbul.com/duyuru/14545/2023-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2023-07-01,add,ECZYT,ECZACIBASI YATIRIM,https://www.borsaistanbul.com/duyuru/14545/2023-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2023-07-01,add,ISMEN,IS Y. MEN. DEG.,https://www.borsaistanbul.com/duyuru/14545/2023-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2023-07-01,add,PENTA,PENTA TEKNOLOJI URUNLERI DAGITIM,https://www.borsaistanbul.com/duyuru/14545/2023-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2023-07-01,add,QUAGR,QUA GRANITE HAYAL YAPI,https://www.borsaistanbul.com/duyuru/14545/2023-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2023-07-01,remove,ALKIM,ALKIM KIMYA,https://www.borsaistanbul.com/duyuru/14545/2023-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2023-07-01,remove,BASGZ,BASKENT DOGALGAZ GMYO,https://www.borsaistanbul.com/duyuru/14545/2023-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2023-07-01,remove,ERBOS,ERBOSAN,https://www.borsaistanbul.com/duyuru/14545/2023-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2023-07-01,remove,FENER,FENERBAHCE FUTBOL,https://www.borsaistanbul.com/duyuru/14545/2023-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2023-07-01,remove,KERVT,KEREVITAS GIDA,https://www.borsaistanbul.com/duyuru/14545/2023-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2023-07-01,remove,KLRHO,KILER HOLDING,https://www.borsaistanbul.com/duyuru/14545/2023-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2023-07-01,remove,TMSN,TUMOSAN MOTOR VE TRAKTOR,https://www.borsaistanbul.com/duyuru/14545/2023-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2023-07-01,remove,TURSG,TURKIYE SIGORTA,https://www.borsaistanbul.com/duyuru/14545/2023-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2023-07-01,remove,ULUUN,ULUSOY UN SANAYI,https://www.borsaistanbul.com/duyuru/14545/2023-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2023-10-01,add,AKFYE,AKFEN YEN. ENERJI,https://www.borsaistanbul.com/duyuru/13125/2023-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2023-10-01,add,BIENY,BIEN YAPI URUNLERI,https://www.borsaistanbul.com/duyuru/13125/2023-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2023-10-01,add,CWENE,CW ENERJI,https://www.borsaistanbul.com/duyuru/13125/2023-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2023-10-01,add,EUPWR,EUROPOWER ENERJI,https://www.borsaistanbul.com/duyuru/13125/2023-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2023-10-01,add,IMASM,IMAS MAKINA,https://www.borsaistanbul.com/duyuru/13125/2023-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2023-10-01,add,KAYSE,KAYSERI SEKER FABRIKASI,https://www.borsaistanbul.com/duyuru/13125/2023-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2023-10-01,add,MIATK,MIA TEKNOLOJI,https://www.borsaistanbul.com/duyuru/13125/2023-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2023-10-01,add,YEOTK,YEO TEKNOLOJI ENERJI,https://www.borsaistanbul.com/duyuru/13125/2023-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2023-10-01,remove,ASUZU,ANADOLU ISUZU,https://www.borsaistanbul.com/duyuru/13125/2023-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2023-10-01,remove,AYDEM,AYDEM ENERJI,https://www.borsaistanbul.com/duyuru/13125/2023-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2023-10-01,remove,BAGFS,BAGFAS,https://www.borsaistanbul.com/duyuru/13125/2023-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2023-10-01,remove,BIOEN,BIOTREND CEVRE VE ENERJI,https://www.borsaistanbul.com/duyuru/13125/2023-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2023-10-01,remove,CEMTS,CEMTAS,https://www.borsaistanbul.com/duyuru/13125/2023-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2023-10-01,remove,GSDHO,GSD HOLDING,https://www.borsaistanbul.com/duyuru/13125/2023-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2023-10-01,remove,SELEC,SELCUK ECZA DEPOSU,https://www.borsaistanbul.com/duyuru/13125/2023-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2023-10-01,remove,TKNSA,TEKNOSA IC VE DIS TICARET,https://www.borsaistanbul.com/duyuru/13125/2023-yili-dorduncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2024-01-01,add,ASGYO,ASCE GMYO,https://www.borsaistanbul.com/duyuru/14627/2024-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2024-01-01,add,BIOEN,BIOTREND CEVRE VE ENERJI,https://www.borsaistanbul.com/duyuru/14627/2024-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2024-01-01,add,BOBET,BOGAZICI BETON SANAYI,https://www.borsaistanbul.com/duyuru/14627/2024-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2024-01-01,add,ENERY,ENERYA ENERJI,https://www.borsaistanbul.com/duyuru/14627/2024-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2024-01-01,add,IZENR,IZDEMIR ENERJI,https://www.borsaistanbul.com/duyuru/14627/2024-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2024-01-01,add,KLSER,KALESERAMIK,https://www.borsaistanbul.com/duyuru/14627/2024-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2024-01-01,add,SDTTR,SDT UZAY VE SAVUNMA,https://www.borsaistanbul.com/duyuru/14627/2024-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2024-01-01,add,TATEN,TATLIPINAR ENERJI URETIM,https://www.borsaistanbul.com/duyuru/14627/2024-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2024-01-01,remove,AKFGY,AKFEN GMYO,https://www.borsaistanbul.com/duyuru/14627/2024-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2024-01-01,remove,GENIL,GEN ILAC,https://www.borsaistanbul.com/duyuru/14627/2024-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2024-01-01,remove,GLYHO,GLOBAL YAT. HOLDING,https://www.borsaistanbul.com/duyuru/14627/2024-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2024-01-01,remove,IMASM,IMAS MAKINA,https://www.borsaistanbul.com/duyuru/14627/2024-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2024-01-01,remove,KZBGY,KIZILBUK GYO,https://www.borsaistanbul.com/duyuru/14627/2024-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2024-01-01,remove,PSGYO,PASIFIK GMYO,https://www.borsaistanbul.com/duyuru/14627/2024-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2024-01-01,remove,SNGYO,SINPAS GMYO,https://www.borsaistanbul.com/duyuru/14627/2024-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2024-01-01,remove,VESBE,VESTEL BEYAZ ESYA,https://www.borsaistanbul.com/duyuru/14627/2024-yili-birinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2024-04-01,add,AGROT,AGROTECH TEKNOLOJI,https://www.borsaistanbul.com/duyuru/13200/2024-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2024-04-01,add,AKFGY,AKFEN GMYO,https://www.borsaistanbul.com/duyuru/13200/2024-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2024-04-01,add,ANSGR,ANADOLU SIGORTA,https://www.borsaistanbul.com/duyuru/13200/2024-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2024-04-01,add,BFREN,BOSCH FREN SISTEMLERI,https://www.borsaistanbul.com/duyuru/13200/2024-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2024-04-01,add,BTCIM,BATI CIMENTO,https://www.borsaistanbul.com/duyuru/13200/2024-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2024-04-01,add,REEDR,REEDER TEKNOLOJI,https://www.borsaistanbul.com/duyuru/13200/2024-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2024-04-01,add,SAYAS,SAY YENILENEBILIR ENERJI,https://www.borsaistanbul.com/duyuru/13200/2024-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2024-04-01,add,TABGD,TAB GIDA,https://www.borsaistanbul.com/duyuru/13200/2024-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2024-04-01,add,TURSG,TURKIYE SIGORTA,https://www.borsaistanbul.com/duyuru/13200/2024-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2024-04-01,add,VESBE,VESTEL BEYAZ ESYA,https://www.borsaistanbul.com/duyuru/13200/2024-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2024-04-01,remove,AGHOL,ANADOLU GRUBU HOLDING,https://www.borsaistanbul.com/duyuru/13200/2024-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2024-04-01,remove,ASGYO,ASCE GMYO,https://www.borsaistanbul.com/duyuru/13200/2024-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2024-04-01,remove,BUCIM,BURSA CIMENTO,https://www.borsaistanbul.com/duyuru/13200/2024-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2024-04-01,remove,ISDMR,ISKENDERUN DEMIR CELIK,https://www.borsaistanbul.com/duyuru/13200/2024-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2024-04-01,remove,IZMDC,IZMIR DEMIR CELIK,https://www.borsaistanbul.com/duyuru/13200/2024-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2024-04-01,remove,KARSN,KARSAN OTOMOTIV,https://www.borsaistanbul.com/duyuru/13200/2024-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2024-04-01,remove,KMPUR,KIMTEKS POLIURETAN,https://www.borsaistanbul.com/duyuru/13200/2024-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2024-04-01,remove,KORDS,KORDSA TEKNIK TEKSTIL,https://www.borsaistanbul.com/duyuru/13200/2024-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2024-04-01,remove,PENTA,PENTA TEKNOLOJI URUNLERI DAGITIM,https://www.borsaistanbul.com/duyuru/13200/2024-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2024-04-01,remove,TATEN,TATLIPINAR ENERJI URETIM,https://www.borsaistanbul.com/duyuru/13200/2024-yili-ikinci-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2024-07-01,add,AGHOL,ANADOLU GRUBU HOLDING,https://www.kap.org.tr/tr/Bildirim/1299052
+2024-07-01,add,ARDYZ,ARD BILISIM TEKNOLOJILERI,https://www.kap.org.tr/tr/Bildirim/1299052
+2024-07-01,add,BINHO,1000 YATIRIMLAR HOL.,https://www.kap.org.tr/tr/Bildirim/1299052
+2024-07-01,add,GOLTS,GOLTAS CIMENTO,https://www.kap.org.tr/tr/Bildirim/1299052
+2024-07-01,add,KTLEV,KATILIMEVIM TAS. FIN.,https://www.kap.org.tr/tr/Bildirim/1299052
+2024-07-01,add,LMKDC,LIMAK DOGU ANADOLU,https://www.kap.org.tr/tr/Bildirim/1299052
+2024-07-01,add,OBAMS,OBA MAKARNACILIK,https://www.kap.org.tr/tr/Bildirim/1299052
+2024-07-01,add,PEKGY,PEKER GMYO,https://www.kap.org.tr/tr/Bildirim/1299052
+2024-07-01,add,TKNSA,TEKNOSA IC VE DIS TICARET,https://www.kap.org.tr/tr/Bildirim/1299052
+2024-07-01,add,TMSN,TUMOSAN MOTOR VE TRAKTOR,https://www.kap.org.tr/tr/Bildirim/1299052
+2024-07-01,remove,AHGAZ,AHLATCI DOGALGAZ,https://www.kap.org.tr/tr/Bildirim/1299052
+2024-07-01,remove,AKCNS,AKCANSA,https://www.kap.org.tr/tr/Bildirim/1299052
+2024-07-01,remove,ALBRK,ALBARAKA TURK,https://www.kap.org.tr/tr/Bildirim/1299052
+2024-07-01,remove,ANSGR,ANADOLU SIGORTA,https://www.kap.org.tr/tr/Bildirim/1299052
+2024-07-01,remove,BIENY,BIEN YAPI URUNLERI,https://www.kap.org.tr/tr/Bildirim/1299052
+2024-07-01,remove,BIOEN,BIOTREND CEVRE VE ENERJI,https://www.kap.org.tr/tr/Bildirim/1299052
+2024-07-01,remove,BOBET,BOGAZICI BETON SANAYI,https://www.kap.org.tr/tr/Bildirim/1299052
+2024-07-01,remove,GWIND,GALATA WIND ENERJI,https://www.kap.org.tr/tr/Bildirim/1299052
+2024-07-01,remove,IPEKE,IPEK DOGAL ENERJI,https://www.kap.org.tr/tr/Bildirim/1299052
+2024-07-01,remove,SAYAS,SAY YENILENEBILIR ENERJI,https://www.kap.org.tr/tr/Bildirim/1299052
+2024-10-01,add,ADEL,ADEL KALEMCILIK,https://www.kap.org.tr/tr/Bildirim/1336462
+2024-10-01,add,ALTNY,ALTINAY SAVUNMA,https://www.kap.org.tr/tr/Bildirim/1336462
+2024-10-01,add,ANSGR,ANADOLU SIGORTA,https://www.kap.org.tr/tr/Bildirim/1336462
+2024-10-01,add,BJKAS,BESIKTAS FUTBOL YAT.,https://www.kap.org.tr/tr/Bildirim/1336462
+2024-10-01,add,CLEBI,CELEBI,https://www.kap.org.tr/tr/Bildirim/1336462
+2024-10-01,add,FENER,FENERBAHCE FUTBOL,https://www.kap.org.tr/tr/Bildirim/1336462
+2024-10-01,add,KARSN,KARSAN OTOMOTIV,https://www.kap.org.tr/tr/Bildirim/1336462
+2024-10-01,add,MPARK,MLP SAGLIK,https://www.kap.org.tr/tr/Bildirim/1336462
+2024-10-01,add,PAPIL,PAPILON SAVUNMA,https://www.kap.org.tr/tr/Bildirim/1336462
+2024-10-01,add,RGYAS,RONESANS GAYRIMENKUL YAT.,https://www.kap.org.tr/tr/Bildirim/1336462
+2024-10-01,remove,BFREN,BOSCH FREN SISTEMLERI,https://www.kap.org.tr/tr/Bildirim/1336462
+2024-10-01,remove,ECZYT,ECZACIBASI YATIRIM,https://www.kap.org.tr/tr/Bildirim/1336462
+2024-10-01,remove,EUREN,EUROPEN ENDUSTRI,https://www.kap.org.tr/tr/Bildirim/1336462
+2024-10-01,remove,ISGYO,IS GMYO,https://www.kap.org.tr/tr/Bildirim/1336462
+2024-10-01,remove,IZENR,IZDEMIR ENERJI,https://www.kap.org.tr/tr/Bildirim/1336462
+2024-10-01,remove,KAYSE,KAYSERI SEKER FABRIKASI,https://www.kap.org.tr/tr/Bildirim/1336462
+2024-10-01,remove,QUAGR,QUA GRANITE HAYAL YAPI,https://www.kap.org.tr/tr/Bildirim/1336462
+2024-10-01,remove,SDTTR,SDT UZAY VE SAVUNMA,https://www.kap.org.tr/tr/Bildirim/1336462
+2024-10-01,remove,TKNSA,TEKNOSA IC VE DIS TICARET,https://www.kap.org.tr/tr/Bildirim/1336462
+2024-10-01,remove,YYLGD,YAYLA GIDA,https://www.kap.org.tr/tr/Bildirim/1336462
+2025-01-01,add,ANHYT,ANADOLU HAYAT EMEK.,https://www.kap.org.tr/tr/Bildirim/1367507
+2025-01-01,add,BSOKE,BATISOKE CIMENTO,https://www.kap.org.tr/tr/Bildirim/1367507
+2025-01-01,add,CVKMD,CVK MADEN,https://www.kap.org.tr/tr/Bildirim/1367507
+2025-01-01,add,IEYHO,ISIKLAR ENERJI YAPI HOL.,https://www.kap.org.tr/tr/Bildirim/1367507
+2025-01-01,add,LIDER,LDR TURIZM,https://www.kap.org.tr/tr/Bildirim/1367507
+2025-01-01,add,MAGEN,MARGUN ENERJI,https://www.kap.org.tr/tr/Bildirim/1367507
+2025-01-01,add,NTHOL,NET HOLDING,https://www.kap.org.tr/tr/Bildirim/1367507
+2025-01-01,add,PASEU,PASIFIK EURASIA LOJISTIK,https://www.kap.org.tr/tr/Bildirim/1367507
+2025-01-01,add,SDTTR,SDT UZAY VE SAVUNMA,https://www.kap.org.tr/tr/Bildirim/1367507
+2025-01-01,add,SELEC,SELCUK ECZA DEPOSU,https://www.kap.org.tr/tr/Bildirim/1367507
+2025-01-01,add,TSPOR,TRABZONSPOR SPORTIF,https://www.kap.org.tr/tr/Bildirim/1367507
+2025-01-01,remove,ADEL,ADEL KALEMCILIK,https://www.kap.org.tr/tr/Bildirim/1367507
+2025-01-01,remove,AKFGY,AKFEN GMYO,https://www.kap.org.tr/tr/Bildirim/1367507
+2025-01-01,remove,BINHO,1000 YATIRIMLAR HOL.,https://www.kap.org.tr/tr/Bildirim/1367507
+2025-01-01,remove,BJKAS,BESIKTAS FUTBOL YAT.,https://www.kap.org.tr/tr/Bildirim/1367507
+2025-01-01,remove,KTLEV,KATILIMEVIM TAS. FIN.,https://www.kap.org.tr/tr/Bildirim/1367507
+2025-01-01,remove,LMKDC,LIMAK DOGU ANADOLU,https://www.kap.org.tr/tr/Bildirim/1367507
+2025-01-01,remove,OBAMS,OBA MAKARNACILIK,https://www.kap.org.tr/tr/Bildirim/1367507
+2025-01-01,remove,PAPIL,PAPILON SAVUNMA,https://www.kap.org.tr/tr/Bildirim/1367507
+2025-01-01,remove,PEKGY,PEKER GMYO,https://www.kap.org.tr/tr/Bildirim/1367507
+2025-01-01,remove,RGYAS,RONESANS GAYRIMENKUL YAT.,https://www.kap.org.tr/tr/Bildirim/1367507
+2025-01-01,remove,VESBE,VESTEL BEYAZ ESYA,https://www.kap.org.tr/tr/Bildirim/1367507
+2025-04-01,add,AHGAZ,AHLATCI DOGALGAZ,https://www.kap.org.tr/tr/Bildirim/1409989
+2025-04-01,add,AVPGY,AVRUPAKENT GMYO,https://www.kap.org.tr/tr/Bildirim/1409989
+2025-04-01,add,EFORC,EFOR CAY SANAYI,https://www.kap.org.tr/tr/Bildirim/1409989
+2025-04-01,add,GRTHO,GRAINTURK HOLDING,https://www.kap.org.tr/tr/Bildirim/1409989
+2025-04-01,add,GSRAY,GALATASARAY SPORTIF,https://www.kap.org.tr/tr/Bildirim/1409989
+2025-04-01,add,KTLEV,KATILIMEVIM TAS. FIN.,https://www.kap.org.tr/tr/Bildirim/1409989
+2025-04-01,add,LMKDC,LIMAK DOGU ANADOLU,https://www.kap.org.tr/tr/Bildirim/1409989
+2025-04-01,add,OBAMS,OBA MAKARNACILIK,https://www.kap.org.tr/tr/Bildirim/1409989
+2025-04-01,add,RALYH,RAL YATIRIM HOLDING,https://www.kap.org.tr/tr/Bildirim/1409989
+2025-04-01,add,RYGYO,REYSAS GMYO,https://www.kap.org.tr/tr/Bildirim/1409989
+2025-04-01,remove,AKFYE,AKFEN YEN. ENERJI,https://www.kap.org.tr/tr/Bildirim/1409989
+2025-04-01,remove,CVKMD,CVK MADEN,https://www.kap.org.tr/tr/Bildirim/1409989
+2025-04-01,remove,FENER,FENERBAHCE FUTBOL,https://www.kap.org.tr/tr/Bildirim/1409989
+2025-04-01,remove,KLSER,KALESERAMIK,https://www.kap.org.tr/tr/Bildirim/1409989
+2025-04-01,remove,LIDER,LDR TURIZM,https://www.kap.org.tr/tr/Bildirim/1409989
+2025-04-01,remove,NTHOL,NET HOLDING,https://www.kap.org.tr/tr/Bildirim/1409989
+2025-04-01,remove,SDTTR,SDT UZAY VE SAVUNMA,https://www.kap.org.tr/tr/Bildirim/1409989
+2025-04-01,remove,TMSN,TUMOSAN MOTOR VE TRAKTOR,https://www.kap.org.tr/tr/Bildirim/1409989
+2025-04-01,remove,TSPOR,TRABZONSPOR SPORTIF,https://www.kap.org.tr/tr/Bildirim/1409989
+2025-04-01,remove,TUKAS,TUKAS,https://www.kap.org.tr/tr/Bildirim/1409989
+2025-07-01,add,BALSU,BALSU GIDA,https://www.borsaistanbul.com/duyuru/15121/2025-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2025-07-01,add,BINHO,1000 YATIRIMLAR HOL.,https://www.borsaistanbul.com/duyuru/15121/2025-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2025-07-01,add,DSTKF,DESTEK FINANS FAKTORING,https://www.borsaistanbul.com/duyuru/15121/2025-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2025-07-01,add,FENER,FENERBAHCE FUTBOL,https://www.borsaistanbul.com/duyuru/15121/2025-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2025-07-01,add,GENIL,GEN ILAC,https://www.borsaistanbul.com/duyuru/15121/2025-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2025-07-01,add,GLRMK,GULERMAK AGIR SANAYI,https://www.borsaistanbul.com/duyuru/15121/2025-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2025-07-01,add,GRSEL,GUR-SEL TURIZM TASIMACILIK,https://www.borsaistanbul.com/duyuru/15121/2025-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2025-07-01,add,IPEKE,IPEK DOGAL ENERJI,https://www.borsaistanbul.com/duyuru/15121/2025-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2025-07-01,add,KUYAS,KUYAS YATIRIM,https://www.borsaistanbul.com/duyuru/15121/2025-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2025-07-01,add,TUREX,TUREKS TURIZM TASIMACILIK,https://www.borsaistanbul.com/duyuru/15121/2025-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2025-07-01,remove,AGROT,AGROTECH TEKNOLOJI,https://www.borsaistanbul.com/duyuru/15121/2025-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2025-07-01,remove,AHGAZ,AHLATCI DOGALGAZ,https://www.borsaistanbul.com/duyuru/15121/2025-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2025-07-01,remove,ANHYT,ANADOLU HAYAT EMEK.,https://www.borsaistanbul.com/duyuru/15121/2025-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2025-07-01,remove,ARDYZ,ARD BILISIM TEKNOLOJILERI,https://www.borsaistanbul.com/duyuru/15121/2025-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2025-07-01,remove,ECILC,ECZACIBASI ILAC,https://www.borsaistanbul.com/duyuru/15121/2025-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2025-07-01,remove,GOLTS,GOLTAS CIMENTO,https://www.borsaistanbul.com/duyuru/15121/2025-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2025-07-01,remove,KARSN,KARSAN OTOMOTIV,https://www.borsaistanbul.com/duyuru/15121/2025-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2025-07-01,remove,KONYA,KONYA CIMENTO,https://www.borsaistanbul.com/duyuru/15121/2025-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2025-07-01,remove,RYGYO,REYSAS GMYO,https://www.borsaistanbul.com/duyuru/15121/2025-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2025-07-01,remove,SELEC,SELCUK ECZA DEPOSU,https://www.borsaistanbul.com/duyuru/15121/2025-yili-ucuncu-uc-aylik-donemi-icin-bist-pay-endeksleri-kapsaminda-yer-alacak-paylar-belirlenmistir
+2025-10-01,add,DAPGM,DAP GAYRIMENKUL,https://www.kap.org.tr/tr/Bildirim/1489616
+2025-10-01,add,ECILC,ECZACIBASI ILAC,https://www.kap.org.tr/tr/Bildirim/1489616
+2025-10-01,add,PATEK,PASIFIK TEKNOLOJI,https://www.kap.org.tr/tr/Bildirim/1489616
+2025-10-01,add,TSPOR,TRABZONSPOR SPORTIF,https://www.kap.org.tr/tr/Bildirim/1489616
+2025-10-01,add,TUKAS,TUKAS,https://www.kap.org.tr/tr/Bildirim/1489616
+2025-10-01,remove,ALFAS,ALFA SOLAR ENERJI,https://www.kap.org.tr/tr/Bildirim/1489616
+2025-10-01,remove,AVPGY,AVRUPAKENT GMYO,https://www.kap.org.tr/tr/Bildirim/1489616
+2025-10-01,remove,BERA,BERA HOLDING,https://www.kap.org.tr/tr/Bildirim/1489616
+2025-10-01,remove,LMKDC,LIMAK DOGU ANADOLU,https://www.kap.org.tr/tr/Bildirim/1489616
+2025-10-01,remove,SMRTG,SMART GUNES ENERJISI TEK.,https://www.kap.org.tr/tr/Bildirim/1489616
+2026-01-01,add,IZENR,IZDEMIR ENERJI,https://www.kap.org.tr/tr/Bildirim/1528220
+2026-01-01,add,KLRHO,KILER HOLDING,https://www.kap.org.tr/tr/Bildirim/1528220
+2026-01-01,add,QUAGR,QUA GRANITE HAYAL YAPI,https://www.kap.org.tr/tr/Bildirim/1528220
+2026-01-01,remove,BINHO,1000 YATIRIMLAR HOL.,https://www.kap.org.tr/tr/Bildirim/1528220
+2026-01-01,remove,CLEBI,CELEBI,https://www.kap.org.tr/tr/Bildirim/1528220
+2026-01-01,remove,IEYHO,ISIKLAR ENERJI YAPI HOL.,https://www.kap.org.tr/tr/Bildirim/1528220
+2026-04-01,add,CVKMD,CVK MADEN,https://www.kap.org.tr/tr/Bildirim/1574461
+2026-04-01,add,EUREN,EUROPEN ENDUSTRI,https://www.kap.org.tr/tr/Bildirim/1574461
+2026-04-01,add,PAHOL,PASIFIK HOLDING,https://www.kap.org.tr/tr/Bildirim/1574461
+2026-04-01,add,PSGYO,PASIFIK GMYO,https://www.kap.org.tr/tr/Bildirim/1574461
+2026-04-01,add,SARKY,SARKUYSAN,https://www.kap.org.tr/tr/Bildirim/1574461
+2026-04-01,remove,EGEEN,EGE ENDUSTRI,https://www.kap.org.tr/tr/Bildirim/1574461
+2026-04-01,remove,KCAER,KOCAER CELIK,https://www.kap.org.tr/tr/Bildirim/1574461
+2026-04-01,remove,TSPOR,TRABZONSPOR SPORTIF,https://www.kap.org.tr/tr/Bildirim/1574461
+2026-04-01,remove,TTRAK,TURK TRAKTOR,https://www.kap.org.tr/tr/Bildirim/1574461
+2026-04-01,remove,YEOTK,YEO TEKNOLOJI ENERJI,https://www.kap.org.tr/tr/Bildirim/1574461
+2026-06-18,add,BERA,BERA HOLDING,https://www.kap.org.tr/tr/Bildirim/1618229
+2026-06-18,remove,KONTR,KONTROLMATIK TEKNOLOJI,https://www.kap.org.tr/tr/Bildirim/1618229
+2026-07-01,add,ESEN,ESENBOGA ELEKTRIK,https://www.kap.org.tr/tr/Bildirim/1619135
+2026-07-01,add,IEYHO,ISIKLAR ENERJI YAPI HOL.,https://www.kap.org.tr/tr/Bildirim/1619135
+2026-07-01,add,ODINE,ODINE TEKNOLOJI,https://www.kap.org.tr/tr/Bildirim/1619135
+2026-07-01,remove,AGHOL,ANADOLU GRUBU HOLDING,https://www.kap.org.tr/tr/Bildirim/1619135
+2026-07-01,remove,TABGD,TAB GIDA,https://www.kap.org.tr/tr/Bildirim/1619135
+2026-07-01,remove,TUREX,TUREKS TURIZM TASIMACILIK,https://www.kap.org.tr/tr/Bildirim/1619135
+2026-10-01,add,AGHOL,ANADOLU GRUBU HOLDING,https://www.kap.org.tr/tr/Bildirim/1666347
+2026-10-01,add,AHGAZ,AHLATCI DOGALGAZ,https://www.kap.org.tr/tr/Bildirim/1666347
+2026-10-01,add,AKCNS,AKCANSA,https://www.kap.org.tr/tr/Bildirim/1666347
+2026-10-01,add,AKFYE,AKFEN YEN. ENERJI,https://www.kap.org.tr/tr/Bildirim/1666347
+2026-10-01,add,ALBRK,ALBARAKA TURK,https://www.kap.org.tr/tr/Bildirim/1666347
+2026-10-01,add,ANHYT,ANADOLU HAYAT EMEK.,https://www.kap.org.tr/tr/Bildirim/1666347
+2026-10-01,add,AYGAZ,AYGAZ,https://www.kap.org.tr/tr/Bildirim/1666347
+2026-10-01,add,BINHO,1000 YATIRIMLAR HOL.,https://www.kap.org.tr/tr/Bildirim/1666347
+2026-10-01,add,ECZYT,ECZACIBASI YATIRIM,https://www.kap.org.tr/tr/Bildirim/1666347
+2026-10-01,add,EGEEN,EGE ENDUSTRI,https://www.kap.org.tr/tr/Bildirim/1666347
+2026-10-01,add,EGGUB,EGE GUBRE,https://www.kap.org.tr/tr/Bildirim/1666347
+2026-10-01,add,ENTRA,IC ENTERRA YEN. ENERJI,https://www.kap.org.tr/tr/Bildirim/1666347
+2026-10-01,add,GLYHO,GLOBAL YAT. HOLDING,https://www.kap.org.tr/tr/Bildirim/1666347
+2026-10-01,add,GWIND,GALATA WIND ENERJI,https://www.kap.org.tr/tr/Bildirim/1666347
+2026-10-01,add,ISDMR,ISKENDERUN DEMIR CELIK,https://www.kap.org.tr/tr/Bildirim/1666347
+2026-10-01,add,KARSN,KARSAN OTOMOTIV,https://www.kap.org.tr/tr/Bildirim/1666347
+2026-10-01,add,KATMR,KATMERCILER EKIPMAN,https://www.kap.org.tr/tr/Bildirim/1666347
+2026-10-01,add,KCAER,KOCAER CELIK,https://www.kap.org.tr/tr/Bildirim/1666347
+2026-10-01,add,KORDS,KORDSA TEKNIK TEKSTIL,https://www.kap.org.tr/tr/Bildirim/1666347
+2026-10-01,add,LMKDC,LIMAK DOGU ANADOLU,https://www.kap.org.tr/tr/Bildirim/1666347
+2026-10-01,add,RGYAS,RONESANS GAYRIMENKUL YAT.,https://www.kap.org.tr/tr/Bildirim/1666347
+2026-10-01,add,RYSAS,REYSAS LOJISTIK,https://www.kap.org.tr/tr/Bildirim/1666347
+2026-10-01,add,SNGYO,SINPAS GMYO,https://www.kap.org.tr/tr/Bildirim/1666347
+2026-10-01,add,TABGD,TAB GIDA,https://www.kap.org.tr/tr/Bildirim/1666347
+2026-10-01,add,TCKRC,KIRAC GALVANIZ,https://www.kap.org.tr/tr/Bildirim/1666347
+2026-10-01,add,TRGYO,TORUNLAR GMYO,https://www.kap.org.tr/tr/Bildirim/1666347
+2026-10-01,add,TTRAK,TURK TRAKTOR,https://www.kap.org.tr/tr/Bildirim/1666347
+2026-10-01,remove,BALSU,BALSU GIDA,https://www.kap.org.tr/tr/Bildirim/1666347
+2026-10-01,remove,BSOKE,BATISOKE CIMENTO,https://www.kap.org.tr/tr/Bildirim/1666347
+2026-10-01,remove,DAPGM,DAP GAYRIMENKUL,https://www.kap.org.tr/tr/Bildirim/1666347
+2026-10-01,remove,DSTKF,DESTEK FINANS FAKTORING,https://www.kap.org.tr/tr/Bildirim/1666347
+2026-10-01,remove,EFOR,EFOR YATIRIM,https://www.kap.org.tr/tr/Bildirim/1666347
+2026-10-01,remove,ESEN,ESENBOGA ELEKTRIK,https://www.kap.org.tr/tr/Bildirim/1666347
+2026-10-01,remove,EUPWR,EUROPOWER ENERJI,https://www.kap.org.tr/tr/Bildirim/1666347
+2026-10-01,remove,GENIL,GEN ILAC,https://www.kap.org.tr/tr/Bildirim/1666347
+2026-10-01,remove,GESAN,GIRISIM ELEKTRIK SANAYI,https://www.kap.org.tr/tr/Bildirim/1666347
+2026-10-01,remove,GRTHO,GRAINTURK HOLDING,https://www.kap.org.tr/tr/Bildirim/1666347
+2026-10-01,remove,GSRAY,GALATASARAY SPORTIF,https://www.kap.org.tr/tr/Bildirim/1666347
+2026-10-01,remove,IEYHO,ISIKLAR ENERJI YAPI HOL.,https://www.kap.org.tr/tr/Bildirim/1666347
+2026-10-01,remove,IZENR,IZDEMIR ENERJI,https://www.kap.org.tr/tr/Bildirim/1666347
+2026-10-01,remove,KLRHO,KILER HOLDING,https://www.kap.org.tr/tr/Bildirim/1666347
+2026-10-01,remove,KTLEV,KATILIMEVIM TAS. FIN.,https://www.kap.org.tr/tr/Bildirim/1666347
+2026-10-01,remove,KUYAS,KUYAS YATIRIM,https://www.kap.org.tr/tr/Bildirim/1666347
+2026-10-01,remove,MAGEN,MARGUN ENERJI,https://www.kap.org.tr/tr/Bildirim/1666347
+2026-10-01,remove,MIATK,MIA TEKNOLOJI,https://www.kap.org.tr/tr/Bildirim/1666347
+2026-10-01,remove,ODINE,ODINE TEKNOLOJI,https://www.kap.org.tr/tr/Bildirim/1666347
+2026-10-01,remove,PASEU,PASIFIK EURASIA LOJISTIK,https://www.kap.org.tr/tr/Bildirim/1666347
+2026-10-01,remove,PATEK,PASIFIK TEKNOLOJI,https://www.kap.org.tr/tr/Bildirim/1666347
+2026-10-01,remove,PSGYO,PASIFIK GMYO,https://www.kap.org.tr/tr/Bildirim/1666347
+2026-10-01,remove,QUAGR,QUA GRANITE HAYAL YAPI,https://www.kap.org.tr/tr/Bildirim/1666347
+2026-10-01,remove,RALYH,RAL YATIRIM HOLDING,https://www.kap.org.tr/tr/Bildirim/1666347
+2026-10-01,remove,REEDR,REEDER TEKNOLOJI,https://www.kap.org.tr/tr/Bildirim/1666347
+2026-10-01,remove,SARKY,SARKUYSAN,https://www.kap.org.tr/tr/Bildirim/1666347
+2026-10-01,remove,SKBNK,SEKERBANK,https://www.kap.org.tr/tr/Bildirim/1666347

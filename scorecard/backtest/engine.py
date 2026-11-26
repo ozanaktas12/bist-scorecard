@@ -269,8 +269,9 @@ class Backtester:
         return pd.Series(returns, index=self.dates, name=f"{log.horizon.value}/{log.profile}")
 
     def equal_weight_universe(self) -> pd.Series:
-        """Benchmark: every available stock, equal weights, rebalanced monthly."""
-        return self.stock_month.mean(axis=1).rename("Equal-weight BIST100")
+        """Benchmark: every stock in BIST100 on the decision day, equal weights, monthly rebalanced."""
+        members = self.market.members.loc[self.dates]
+        return self.stock_month.where(members).mean(axis=1).rename("Equal-weight BIST100")
 
     def random_portfolios(self, log: DecisionLog, n: int = 200, seed: int = 7) -> pd.DataFrame:
         """Same number of stocks as the BUY list each month, but picked at random."""
