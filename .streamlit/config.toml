@@ -3,3 +3,26 @@ toolbarMode = "viewer"   # hides the Deploy button and developer menu
 
 [browser]
 gatherUsageStats = false
+
+# A quote-board look: night-blue panels, one amber accent, numbers in a
+# monospaced face so columns of figures line up.
+[theme]
+base = "dark"
+primaryColor = "#f0b429"
+backgroundColor = "#0f1620"
+secondaryBackgroundColor = "#17212d"
+textColor = "#dfe6ee"
+borderColor = "#263241"
+dataframeHeaderBackgroundColor = "#17212d"
+linkColor = "#f0b429"
+baseRadius = "small"
+showWidgetBorder = true
+font = "IBM Plex Sans:https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+codeFont = "IBM Plex Mono:https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+greenColor = "#4cc38a"
+redColor = "#ef6461"
+orangeColor = "#f0a04b"
+
+[theme.sidebar]
+backgroundColor = "#0b1119"
+secondaryBackgroundColor = "#17212d"

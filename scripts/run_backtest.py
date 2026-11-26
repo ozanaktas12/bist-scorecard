@@ -4,20 +4,17 @@
 """
 from __future__ import annotations
 
-import sys
 from dataclasses import replace
 from pathlib import Path
 
 import pandas as pd
 
+from scorecard.backtest import Backtester, DecisionLog, calibrate, load_cpi, performance, real_returns
+from scorecard.backtest.calibration import TEST_START
+from scorecard.config import PROFILE_NAMES, SETTINGS, Horizon
+from scorecard.data import load_market_data
+
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT))
-
-from scorecard.backtest import Backtester, calibrate, load_cpi, performance, real_returns  # noqa: E402
-from scorecard.backtest.calibration import TEST_START  # noqa: E402
-from scorecard.config import PROFILE_NAMES, SETTINGS, Horizon  # noqa: E402
-from scorecard.data import load_market_data  # noqa: E402
-
 OUT = ROOT / "results"
 OUT.mkdir(exist_ok=True)
 pd.set_option("display.width", 220)
@@ -118,12 +115,31 @@ def main() -> None:
             }
     save(pd.DataFrame(sens).T, "sensitivity_top_fraction", "Sensitivity of the top-fraction rule (medium)")
 
-    # 8. Risk flags
+    # 8. SELL rule: purely relative (current) vs. the earlier "score < 40 OR worst 20 %"
+    sell_rows = {}
+    for h in Horizon:
+        for p in PROFILE_NAMES:
+            current = logs[(h, p)]
+            earlier = current.table.copy()
+            earlier.loc[(earlier.score < 40) & (earlier.decision != "BUY"), "decision"] = "SELL"
+            for name, log in (("worst 20 %", current),
+                              ("score < 40 OR worst 20 %", DecisionLog(h, p, earlier))):
+                hr, sig = log.hit_rates(), log.significance()
+                sell_rows[(h.value, p, name)] = {
+                    "SELL share": (log.table.decision == "SELL").mean(),
+                    "SELL hit rate": hr["SELL hit rate"],
+                    "Avg excess SELL": hr["Avg excess SELL"],
+                    "BUY vs SELL": sig["BUY vs SELL (mean)"],
+                    "t (BUY vs SELL)": sig["BUY vs SELL (t)"],
+                }
+    save(pd.DataFrame(sell_rows).T, "sell_rule", "SELL rule comparison")
+
+    # 9. Risk flags
     main_log = logs[(Horizon.MEDIUM, "Balanced")]
     save(main_log.flag_effect(), "flags_buy", "BUY decisions with / without flags (medium, Balanced)")
     save(main_log.flag_rules_effect(bt.flags.panels), "flags_rules", "Every flag rule, all decisions")
 
-    # 9. Data cleaning
+    # 10. Data cleaning
     save(pd.DataFrame([a.__dict__ for a in adjustments]), "corporate_actions",
          "Corporate-action corrections")
 

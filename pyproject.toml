@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bist-scorecard"
+version = "1.0.0"
+description = "Explainable BUY / HOLD / SELL scoring and backtest for BIST100 stocks"
+requires-python = ">=3.12"
+
+[tool.setuptools.packages.find]
+include = ["scorecard*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

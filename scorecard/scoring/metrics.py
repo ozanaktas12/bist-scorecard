@@ -128,7 +128,7 @@ def build_specs(cfg: HorizonConfig) -> list[MetricSpec]:
                    else "Price is at its 52-week high"),
         MetricSpec("risk_adj_return", "Risk-adjusted return", Pillar.MOMENTUM,
                    [(-1.5, 0.0), (0.0, 50.0), (1.5, 100.0)],
-                   lambda v: f"Momentum z-score {v:+.2f} (return measured in units of its own risk)"),
+                   lambda v: f"Return per unit of risk: {v:+.2f} (return divided by its own volatility)"),
         # ----------------------------------------------------------------- Risk
         MetricSpec("vol_ratio", "Volatility vs BIST100", Pillar.RISK,
                    # A single stock is naturally ~1.6x as volatile as the diversified index.
@@ -150,11 +150,14 @@ def build_specs(cfg: HorizonConfig) -> list[MetricSpec]:
         # --------------------------------------------------------------- Volume
         MetricSpec("obv_slope", "On-balance volume", Pillar.VOLUME,
                    [(-0.3, 0.0), (0.0, 50.0), (0.3, 100.0)],
-                   lambda v: ("Net buying volume" if v > 0 else "Net selling volume") + f" ({v:+.2f})"),
+                   lambda v: "More volume on up days than on down days" if v > 0
+                   else "More volume on down days than on up days"),
         MetricSpec("liquidity", "Liquidity (price impact)", Pillar.VOLUME,
                    [(0.25, 100.0), (1.0, 60.0), (4.0, 20.0), (10.0, 0.0)],
-                   lambda v: f"Trading moves the price {v:.2f}x as much as for a typical BIST100 stock"
-                   + (" (very liquid)" if v < 0.25 else " (thinly traded)" if v > 4 else "")),
+                   lambda v: ("Very liquid: large orders barely move the price" if v < 0.25
+                              else "Thinly traded: orders move the price "
+                                   f"{v:.1f}x as much as for a typical BIST100 stock" if v > 4
+                              else f"Orders move the price {v:.1f}x as much as for a typical BIST100 stock")),
         MetricSpec("rel_volume", "Relative volume (20/60 days)", Pillar.VOLUME,
                    [(0.5, 20.0), (1.0, 50.0), (1.5, 80.0), (2.5, 90.0)],
                    lambda v: f"Recent trading interest is {v:.2f}x normal"),

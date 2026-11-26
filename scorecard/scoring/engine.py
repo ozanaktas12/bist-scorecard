@@ -16,12 +16,12 @@ def decide(total: pd.DataFrame, rules: DecisionRules = SETTINGS.rules) -> pd.Dat
     """Cross-sectional decision for every date.
 
     BUY  = score >= buy_min_score AND among the best `top_fraction` of that day
-    SELL = score <  sell_max_score OR  among the worst `bottom_fraction`
+    SELL = among the worst `bottom_fraction` of that day
     HOLD = everything else; stocks without a score get no decision.
     """
     pct_rank = total.rank(axis=1, pct=True, ascending=True)
     buy = (total >= rules.buy_min_score) & (pct_rank > 1 - rules.top_fraction)
-    sell = (total < rules.sell_max_score) | (pct_rank <= rules.bottom_fraction)
+    sell = pct_rank <= rules.bottom_fraction
     out = pd.DataFrame(Decision.HOLD.value, index=total.index, columns=total.columns, dtype=object)
     out = out.mask(sell, Decision.SELL.value).mask(buy, Decision.BUY.value)
     return out.where(total.notna())
@@ -32,6 +32,7 @@ class MetricResult:
     spec: MetricSpec
     raw: float
     score: float
+    percentile: float      # share of the other stocks with a lower score on this metric
 
     @property
     def explanation(self) -> str:
@@ -58,10 +59,17 @@ class ScoreCard:
         return [f for f in self.flags if f.level == Level.RED]
 
     def strengths(self, n: int = 3) -> list[MetricResult]:
-        return sorted(self.metrics, key=lambda m: -m.score)[:n]
+        """Metrics where this stock stands out from the others, not just scores high.
+
+        Ranking by the absolute score made "low beta" the top strength of most
+        stocks in a falling market; the percentile shows what is special.
+        """
+        good = [m for m in self.metrics if m.score >= 50 and m.percentile >= 0.5]
+        return sorted(good, key=lambda m: -m.percentile)[:n]
 
     def weaknesses(self, n: int = 3) -> list[MetricResult]:
-        return sorted(self.metrics, key=lambda m: m.score)[:n]
+        bad = [m for m in self.metrics if m.score < 50 and m.percentile < 0.5]
+        return sorted(bad, key=lambda m: m.percentile)[:n]
 
 
 class ScoreEngine:
@@ -111,6 +119,11 @@ class ScoreEngine:
                               for t in table.index]
         return table.dropna(subset=["Score"]).sort_values("Score", ascending=False)
 
+    def _share_below(self, key: str, date: pd.Timestamp, ticker: str) -> float:
+        """Share of the *other* stocks that score lower on this metric (ties count half)."""
+        ranks = self.metric_scores[key].loc[date].rank()
+        return float((ranks[ticker] - 1) / max(ranks.count() - 1, 1))
+
     def scorecard(self, ticker: str, profile: str, date: pd.Timestamp | None = None) -> ScoreCard:
         date = date or self.latest_date()
         total_row = self.total_score(profile).loc[date]
@@ -129,7 +142,8 @@ class ScoreEngine:
             decision=Decision(self.decisions(profile).at[date, ticker]),
             pillars={p: float(self.pillar_scores[p].at[date, ticker]) for p in Pillar},
             metrics=[MetricResult(s, float(self.features.raw[s.key].at[date, ticker]),
-                                  float(self.metric_scores[s.key].at[date, ticker]))
+                                  float(self.metric_scores[s.key].at[date, ticker]),
+                                  self._share_below(s.key, date, ticker))
                      for s in self.features.specs],
             flags=self.flags.flags_at(ticker, date),
         )

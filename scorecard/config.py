@@ -137,10 +137,14 @@ PROFILE_NAMES = [*PROFILES, DATA_DRIVEN]
 
 @dataclass(frozen=True)
 class DecisionRules:
-    """BUY needs an absolute AND a relative condition; SELL needs either one."""
+    """BUY needs an absolute AND a relative condition; SELL is purely relative.
+
+    An absolute SELL threshold (score < 40) was tested too: in a falling market
+    it labelled more than half of the index SELL, and the backtest showed no
+    gain from it (results/sell_rule.csv), so it was removed.
+    """
 
     buy_min_score: float = 60.0
-    sell_max_score: float = 40.0
     top_fraction: float = 0.20       # BUY candidates: best 20 % of the universe on that date
     bottom_fraction: float = 0.20    # SELL candidates: worst 20 %
 
