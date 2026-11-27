@@ -66,7 +66,7 @@ def html(text: str) -> None:
     st.markdown(text, unsafe_allow_html=True)
 
 
-# ------------------------------------------------------------------ charts
+# Charts
 def style(fig: go.Figure, height: int, left: int = 56) -> go.Figure:
     """Common chart style. The left margin is fixed so tick labels are not cut off."""
     fig.update_layout(
@@ -86,9 +86,9 @@ def show(fig: go.Figure) -> None:
     st.plotly_chart(fig, width="stretch", theme=None, config={"displayModeBar": False})
 
 
-# --------------------------------------------------------------- html parts
+# Html parts
 def quote(ticker: str, sector: str, decision: str, score: float, rank: int, size: int) -> None:
-    """The headline row: ticker, decision, score and rank, like a line on a quote board."""
+    """The headline row: ticker, decision, score and rank."""
     color = DECISION_COLORS[decision]
     html(f"""<div class="quote">
       <div><div class="ticker">{ticker}</div><div class="sector">{escape(sector)}</div></div>

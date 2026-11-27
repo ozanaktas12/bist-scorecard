@@ -87,7 +87,7 @@ class FeatureBuilder:
 def build_specs(cfg: HorizonConfig) -> list[MetricSpec]:
     pct = lambda v: f"{v:+.1%}"
     return [
-        # ---------------------------------------------------------------- Trend
+        # Trend
         MetricSpec("dist_short", f"Price vs {cfg.short_ma}-day average", Pillar.TREND,
                    symmetric(cfg.distance_scale),
                    lambda v: f"Price is {pct(v)} away from its {cfg.short_ma}-day average"),
@@ -101,7 +101,7 @@ def build_specs(cfg: HorizonConfig) -> list[MetricSpec]:
                    [(-0.8, 0.0), (0.0, 50.0), (0.8, 100.0)],
                    lambda v: ("Steady up-trend" if v > 0.5 else "Steady down-trend" if v < -0.5
                               else "No clear direction") + f" (signed R² = {v:+.2f})"),
-        # ------------------------------------------------------------- Momentum
+        # Momentum
         MetricSpec("rsi", f"RSI ({cfg.rsi_period})", Pillar.MOMENTUM,
                    # Hump-shaped: healthy strength (55-70) is best, overbought is penalised.
                    [(0, 10.0), (30, 20.0), (50, 60.0), (55, 90.0), (70, 100.0),
@@ -117,7 +117,7 @@ def build_specs(cfg: HorizonConfig) -> list[MetricSpec]:
         MetricSpec("risk_adj_return", "Risk-adjusted return", Pillar.MOMENTUM,
                    [(-1.5, 0.0), (0.0, 50.0), (1.5, 100.0)],
                    lambda v: f"Return per unit of risk: {v:+.2f} (return divided by its own volatility)"),
-        # ----------------------------------------------------------------- Risk
+        # Risk
         MetricSpec("vol_ratio", "Volatility vs BIST100", Pillar.RISK,
                    # A single stock is naturally ~1.6x as volatile as the diversified index.
                    [(1.0, 100.0), (1.6, 60.0), (2.2, 30.0), (3.0, 0.0)],
@@ -128,14 +128,14 @@ def build_specs(cfg: HorizonConfig) -> list[MetricSpec]:
         MetricSpec("beta", "Beta", Pillar.RISK,
                    [(0.5, 100.0), (1.0, 70.0), (1.5, 30.0), (2.0, 0.0)],
                    lambda v: f"Beta is {v:.2f} (moves {v:.1f}x the market)"),
-        # ---------------------------------------------------- Relative strength
+        # Relative strength
         MetricSpec("alpha", "Alpha vs BIST100", Pillar.RELATIVE, symmetric(cfg.return_scale),
                    lambda v: f"Beat the beta-adjusted index return by {pct(v)}" if v >= 0
                    else f"Lagged the beta-adjusted index return by {pct(v)}"),
         MetricSpec("sector_rel", "Return vs sector peers", Pillar.RELATIVE,
                    symmetric(cfg.return_scale),
                    lambda v: f"{pct(v)} relative to the median of its sector peers"),
-        # --------------------------------------------------------------- Volume
+        # Volume
         MetricSpec("obv_slope", "On-balance volume", Pillar.VOLUME,
                    [(-0.3, 0.0), (0.0, 50.0), (0.3, 100.0)],
                    lambda v: "More volume on up days than on down days" if v > 0

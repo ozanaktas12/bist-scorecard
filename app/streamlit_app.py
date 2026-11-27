@@ -1,4 +1,4 @@
-"""BIST ScoreCard dashboard.   Run with:  streamlit run app/streamlit_app.py"""
+"""BIST ScoreCard dashboard. Run with: streamlit run app/streamlit_app.py"""
 from __future__ import annotations
 
 import pandas as pd
@@ -38,7 +38,7 @@ def load_backtest():
 
 market, adjustments, flags, engines, valuation = load()
 
-# ------------------------------------------------------------------ sidebar
+# Sidebar
 with st.sidebar:
     st.markdown("### BIST ScoreCard")
     st.caption("Every BIST100 stock scored from 0 to 100 and labelled BUY, HOLD or SELL.")
@@ -97,7 +97,7 @@ def price_chart(ticker: str) -> go.Figure:
     return ui.style(fig, 330)
 
 
-# --------------------------------------------------------------- scorecard
+# Scorecard
 with tab_card:
     default = list(ranking.index).index("ASELS") if "ASELS" in ranking.index else 0
     ticker = st.selectbox("Stock", ranking.index, index=default,
@@ -144,7 +144,7 @@ with tab_card:
                 format="%.0f%%", help="Share of the other stocks with a lower score"),
         })
 
-# ----------------------------------------------------------------- ranking
+# Ranking
 with tab_rank:
     counts = ranking["Decision"].value_counts()
     ui.html('<p><span class="mono" style="font-size:1.1rem">' + "&emsp;".join(
@@ -167,7 +167,7 @@ with tab_rank:
                        "Red flags": st.column_config.NumberColumn(format="%d"),
                        **pillar_columns})
 
-# ----------------------------------------------------------------- compare
+# Compare
 with tab_compare:
     picks = st.multiselect("Choose up to 3 stocks", ranking.index,
                            default=list(ranking.index[:3]), max_selections=3)
@@ -192,7 +192,7 @@ with tab_compare:
                                  c.universe_size, describe(c, row))
                 ui.flags(c.flags)
 
-# ---------------------------------------------------------------- backtest
+# Backtest
 with tab_bt:
     st.markdown("#### How good were the system's past decisions?")
     st.caption("Every month since January 2021 the system scored all stocks using only the "

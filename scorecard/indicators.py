@@ -37,7 +37,7 @@ def daily_returns(close: Panel) -> Panel:
     return close.pct_change(fill_method=None)
 
 
-# --------------------------------------------------------------------------- trend
+# Trend
 @register
 class SMA(Indicator):
     """Simple moving average."""
@@ -74,7 +74,7 @@ class TrendR2(Indicator):
         return np.sign(corr) * corr**2
 
 
-# ------------------------------------------------------------------------ momentum
+# Momentum
 @register
 class RSI(Indicator):
     """Relative Strength Index with Wilder's smoothing (alpha = 1 / period)."""
@@ -146,7 +146,7 @@ class RiskAdjustedReturn(Indicator):
         return ret / (vol * np.sqrt(self.window))
 
 
-# ---------------------------------------------------------------------------- risk
+# Risk
 @register
 class Volatility(Indicator):
     """Standard deviation of daily returns, annualised with 252 trading days."""
@@ -194,7 +194,7 @@ class Beta(Indicator):
         return cov.div(var, axis=0)
 
 
-# -------------------------------------------------------------------------- volume
+# Volume
 @register
 class OBVSlope(Indicator):
     """Change in On-Balance Volume over the window divided by the volume traded (-1 to 1)."""
@@ -238,7 +238,7 @@ class RelativeVolume(Indicator):
         return recent / normal.replace(0, np.nan)
 
 
-# --------------------------------------------------------------- relative strength
+# Relative strength
 @register
 class Alpha(Indicator):
     """Return in excess of what the stock's beta predicts: r_i - beta * r_index."""

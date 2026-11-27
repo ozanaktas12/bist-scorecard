@@ -159,7 +159,7 @@ class Backtester:
         index = forward_return(self.market.index_close, days, self.lag)
         return stock.sub(index, axis=0).loc[self.dates]
 
-    # ------------------------------------------------------------ decision level
+    # Decision level
     def decision_log(self, horizon: Horizon, profile: str, rules: DecisionRules | None = None,
                      total: pd.DataFrame | None = None) -> DecisionLog:
         """`total` lets the calibration pass scores built from its own weights."""
@@ -199,7 +199,7 @@ class Backtester:
                          "t": newey_west_t(ics, MONTHS_PER_HORIZON[horizon] - 1)}
         return pd.DataFrame(rows).T
 
-    # ----------------------------------------------------------- portfolio level
+    # Portfolio level
     def portfolio(self, log: DecisionLog, selection: pd.DataFrame | None = None) -> pd.Series:
         """Monthly return of holding every BUY list for the horizon (`selection` replaces the BUY list)."""
         if selection is None:
