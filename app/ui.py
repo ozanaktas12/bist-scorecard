@@ -53,6 +53,7 @@ CSS = f"""
 .valuation {{ font: .92rem/1.75 {MONO}; white-space: nowrap; }}
 .valuation .k {{ color: {MUTED}; display: inline-block; width: 8.5rem; }}
 .valuation .peer {{ color: {MUTED}; }}
+[data-testid="stElementToolbar"] {{ display: none; }}
 </style>
 """
 
